@@ -1,8 +1,11 @@
+load("@rules_cc//cc:defs.bzl", "cc_proto_library") 
+load("@rules_proto//proto:defs.bzl", "proto_library") 
+
 cc_binary(
 	name = "webserver",
 	srcs = ["main.cc"],
 	deps = [
-		":server"
+		":server",
 	],
 )
 
@@ -11,11 +14,11 @@ cc_library(
     name = "server",
     srcs = glob(["server/**/*.cc"]),
     hdrs = glob(["server/**/*.h"]),
-    visibility = ["//visibility:public"],
 	deps = [
         ":connect",
 		":threadpool",
 		":logger",
+        "//protoc:text_msg_cc_pb", 
     ],
 )
 
@@ -24,7 +27,6 @@ cc_library(
     name = "connect",
     srcs = glob(["connect/**/*.cc"]),
     hdrs = glob(["connect/**/*.h"]),
-    visibility = ["//visibility:public"],
 	deps = [
         ":timer",
 		":logger",
@@ -36,14 +38,12 @@ cc_library(
     name = "timer",
     srcs = glob(["timer/**/*.cc"]),
     hdrs = glob(["timer/**/*.h"]),
-    visibility = ["//visibility:public"],
 )
 
 
 cc_library(
     name = "threadpool",
     hdrs = glob(["threadpool/**/*.h"]),
-    visibility = ["//visibility:public"],
 	linkopts = ["-lpthread"],
 )
 
@@ -52,6 +52,7 @@ cc_library(
     name = "logger",
     srcs = glob(["logger/**/*.cc"]),
     hdrs = glob(["logger/**/*.h"]),
-    visibility = ["//visibility:public"],
 	linkopts = ["-lpthread"],
 )
+
+package(default_visibility = ["//visibility:public"]) 

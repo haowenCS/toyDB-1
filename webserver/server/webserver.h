@@ -6,6 +6,7 @@
 #include "webserver/threadpool/threadpool.h"
 #include "webserver/logger/log.h"
 #include "webserver/timer/heaptimer.h"
+#include "protoc/text_msg.pb.h"
 
 
 #include <memory>		 //unique_ptr

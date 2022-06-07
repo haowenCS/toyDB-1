@@ -1,5 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/ubuntu/myweb'
+make: Leaving directory '/home/ubuntu/myweb'
  
 make: *** No rule to make target 'src/main.cc', needed by 'server'.
 make: *** No rule to make target 'src/server/epoller.cc', needed by 'server'.
@@ -10,5 +11,3 @@ make: *** No rule to make target 'src/logger/log.cc', needed by 'server'.
 make: *** No rule to make target 'src/logger/buffer.cc', needed by 'server'.
 make: *** No rule to make target 'src/client/client.cc', needed by 'client'.
 
-make: Leaving directory '/home/ubuntu/myweb'
- 

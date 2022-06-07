@@ -1,0 +1,7 @@
+syntax = "proto3"; 
+
+package msg; 
+
+message TextMsg { 
+    repeated string text = 1; 
+} 

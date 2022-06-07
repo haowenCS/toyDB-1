@@ -1,0 +1,2 @@
+build --incompatible_blacklisted_protos_requires_proto_info=false
+build --cxxopt='-std=c++14'

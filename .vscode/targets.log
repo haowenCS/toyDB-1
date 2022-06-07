@@ -8,7 +8,7 @@ make: *** No rule to make target 'src/main.cc', needed by 'server'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun  7 00:13:40 2022
+# Make data base, printed on Tue Jun  7 10:55:50 2022
 
 # Variables
 
@@ -63,15 +63,15 @@ VSCODE_CWD = /home/ubuntu
 # environment
 AM_HOME = /home/ubuntu/ics2021/abstract-machine
 # environment
-SSH_CONNECTION = 153.3.60.14 44325 10.0.16.12 22
+SSH_CONNECTION = 153.3.60.14 41394 10.0.16.12 22
 # environment
-PATH = /home/ubuntu/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/ubuntu/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/bin:/snap/bin
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-6d5c1559-ca81-4970-b323-d809f2f726ad.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-71c48036-60da-4f04-bf39-30fbb35cb350.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # automatic
@@ -109,7 +109,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = 18712
+XDG_SESSION_ID = 19891
 # environment
 USER = ubuntu
 # makefile
@@ -129,7 +129,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 153.3.60.14 44325 22
+SSH_CLIENT = 153.3.60.14 41394 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -163,7 +163,6 @@ LANG = C
 # environment
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
- 
 MOTD_SHOWN = pam
 # variable set hash-table stats:
 # Load=76/1024=7%, Rehash=0, Collisions=11/102=11%
@@ -174,9 +173,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64514, inode 650995): 12 files, no impossibilities.
+# . (device 64514, inode 650995): 16 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 16 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -281,13 +280,12 @@ src/logger/log.cc:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 27 / storage = 333 B / avg = 12 B
-# current buf: size = 8162 B / used = 333 B / count = 27 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 31 / storage = 362 B / avg = 11 B
+# current buf: size = 8162 B / used = 362 B / count = 31 / avg = 11 B
 
-# strcache performance: lookups = 39 / hit rate = 30%
+# strcache performance: lookups = 43 / hit rate = 27%
 # hash-table stats:
- 
-# Load=27/8192=0%, Rehash=0, Collisions=1/39=3%
-# Finished Make data base on Tue Jun  7 00:13:40 2022
+# Load=31/8192=0%, Rehash=0, Collisions=1/43=2%
+# Finished Make data base on Tue Jun  7 10:55:50 2022
 
  

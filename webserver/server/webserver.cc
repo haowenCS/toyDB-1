@@ -15,6 +15,15 @@ WebServer::WebServer(int port, int trigMode, int logLevel, const char* logDir) :
     timer_ = std::unique_ptr<HeapTimer>(new HeapTimer());
     threadpool_ = std::unique_ptr<ThreadPool>(new ThreadPool(8));
 
+    msg::TextMsg msg_tmp;
+    msg_tmp.add_text("Hello");
+    msg_tmp.add_text(",");
+    msg_tmp.add_text("Proto");
+
+    for(int i = 0; i < msg_tmp.text_size(); i++){
+        LOG(INFO, msg_tmp.text(i).c_str());
+    }
+    LOG(INFO, "\n")
 
     Log::Instance()->init(logLevel, logDir, ".log", 1024);
     if(isClose_) { LOG(ERROR,"========== Server init error!=========="); }
