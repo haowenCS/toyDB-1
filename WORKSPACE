@@ -13,17 +13,6 @@ http_archive(
     ], 
 ) 
 
-# rules_java defines rules for generating Java code from Protocol Buffers. 
-http_archive( 
-    name = "rules_java", 
-    sha256 = "ccf00372878d141f7d5568cedc4c42ad4811ba367ea3e26bc7c43445bbc52895", 
-    strip_prefix = "rules_java-d7bf804c8731edd232cb061cb2a9fe003a85d8ee", 
-    urls = [ 
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_java/archive/d7bf804c8731edd232cb061cb2a9fe003a85d8ee.tar.gz", 
-        "https://github.com/bazelbuild/rules_java/archive/d7bf804c8731edd232cb061cb2a9fe003a85d8ee.tar.gz", 
-    ], 
-) 
-
 # rules_proto defines abstract rules for building Protocol Buffers. 
 http_archive( 
     name = "rules_proto", 
@@ -38,22 +27,15 @@ http_archive(
 load("@rules_cc//cc:repositories.bzl", "rules_cc_dependencies") 
 rules_cc_dependencies() 
 
-load("@rules_java//java:repositories.bzl", "rules_java_dependencies", "rules_java_toolchains") 
-rules_java_dependencies() 
-rules_java_toolchains() 
 
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains") 
 rules_proto_dependencies() 
 rules_proto_toolchains() 
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-# http_archive(
-#     name = "com_google_protobuf",
-#     strip_prefix = "protobuf-3.11.3",
-#     urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.11.3.tar.gz"],
-#     patches = ["//:protobuf_protoinfo_prepare.patch", "//:protobuf_protoinfo_apply.patch"],
-# )
-
-# load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
-# protobuf_deps()
+# Google Test
+http_archive(
+  name = "com_google_googletest",
+  urls = ["https://github.com/google/googletest/archive/release-1.10.0.zip"],
+  strip_prefix = "googletest-release-1.10.0",
+  sha256 = "94c634d499558a76fa649edb13721dce6e98fb1e7018dfaeba3cd7a083945e91",
+)
