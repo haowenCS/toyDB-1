@@ -8,6 +8,8 @@
 #include <mutex>
 #include <fstream>
 
+#define SAVE_PATH   "log/data.log"
+
 namespace skiplist{
 
 /*=============================class Node================================*/
@@ -85,8 +87,33 @@ public:
 
     void display_list();
 
-    void dump_file();
-    void load_file();
+    void dump_file(){
+        file_writer_.open(SAVE_PATH);
+        Node<K, V>* head = header_->forward[0]; 
+
+        while (head != nullptr) {
+        file_writer_ << head->get_key() << ":" << head->get_value() << "\n";
+        head = head->forward[0];
+        }
+        file_writer_.flush();
+        file_writer_.close();
+    }
+    // void load_file(){
+    //     file_reader_.open(SAVE_PATH);
+    //     std::string line;
+    //     std::string* key = new std::string();
+    //     std::string* value = new std::string();
+
+    //     while (getline(file_reader_, line)) {
+    //         get_key_value_from_string_(line, key, value);
+    //         if (key->empty() || value->empty()) {
+    //             continue;
+    //         }
+    //         insert_element(*key, *value);
+    //         std::cout << "key:" << *key << "value:" << *value << std::endl;
+    //     }
+    //     file_reader_.close();
+    // }
 
     int size(){
         return element_count_;
@@ -94,7 +121,7 @@ public:
 
 private:
     void get_key_value_from_string_(const std::string& str, std::string* key, std::string* value);
-    bool is_valid_string_(const std::string& str);
+//     bool is_valid_string_(const std::string& str);
 
 private:    
 
@@ -237,6 +264,13 @@ V SkipList<K, V>::get_element(K key) {
         std::cout << "Can't find key "<< key << std::endl;
         return V(0);
     }
+}
+
+template<typename K, typename V>
+void SkipList<K, V>::get_key_value_from_string_(const std::string& str, std::string* key, std::string* value) {
+
+    *key = str.substr(0, str.find(":"));
+    *value = str.substr(str.find(":")+1, str.length());
 }
 
 

@@ -28,4 +28,7 @@ TEST(testSkipList, test0){
     EXPECT_EQ(b1, false);
     EXPECT_EQ(b2, true);
     EXPECT_EQ(s, ",");
+
+    skipList.dump_file();
+    // skipList.load_file();
 }
