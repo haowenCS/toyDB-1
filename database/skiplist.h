@@ -10,7 +10,7 @@
 
 #define SAVE_PATH   "log/data.log"
 
-namespace skiplist{
+namespace mylist{
 
 /*=============================class Node================================*/
 template<class K, class V>
@@ -72,11 +72,6 @@ public:
         return h;
     }
 
-    Node<K, V>* create_node(K k, V v, int h){
-        Node<K, V> *n = new Node<K, V>(k, v, h);
-        return n;
-    }
-
     bool insert_element(K, V);
 
     void delete_element(K);
@@ -115,7 +110,7 @@ public:
     //     file_reader_.close();
     // }
 
-    int size(){
+    size_t size(){
         return element_count_;
     }
 
@@ -123,6 +118,10 @@ private:
     void get_key_value_from_string_(const std::string& str, std::string* key, std::string* value);
 //     bool is_valid_string_(const std::string& str);
 
+    Node<K, V>* create_node_(K k, V v, int h){
+        Node<K, V> *n = new Node<K, V>(k, v, h);
+        return n;
+    }
 private:    
 
     std::mutex mtx_;
@@ -178,7 +177,7 @@ bool SkipList<K, V>::insert_element(const K key, const V value) {
         skip_list_height_ = random_height;
     }
 
-    Node<K, V>* inserted_node = create_node(key, value, random_height);
+    Node<K, V>* inserted_node = create_node_(key, value, random_height);
 
     for (int i = 0; i <= random_height; i++) {
         inserted_node->forward[i] = update_nodes[i]->forward[i];

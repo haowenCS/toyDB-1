@@ -1,9 +1,8 @@
-#include <iostream>
-
-#include "gtest/gtest.h"
 #include "skiplist.h"
+#include <iostream>
+#include "gtest/gtest.h"
 
-using namespace skiplist;
+using namespace mylist;
 
 TEST(testSkipList, test0){
 
