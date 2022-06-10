@@ -6,7 +6,8 @@ toyDB
 
 目前实现的功能：
 
-* epoll多路复用IO，使用半同步半反应堆模式
+* epoll多路复用IO，使用reactor模式
+  * reactor + acceptor + handler
 * C++11风格的线程池，使用条件变量实现阻塞队列，利用std::function和std::bind将任务函数绑定添加到线程池
 * 利用SIGALRM和堆，关闭长时间不活跃的连接
 * 添加了一些基于gtest的单元测试
