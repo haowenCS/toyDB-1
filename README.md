@@ -5,7 +5,7 @@ toyDB
 参照游双《Linux高性能服务器编程》和redis的一些思想，实现了这个小玩具
 
 代码结构：
-
+```
 toyDB-+-server-+-BUILD
       |        |-服务端组件
       |-client--BUILD
@@ -16,7 +16,7 @@ toyDB-+-server-+-BUILD
       |        |-通信协议
       |-WORKSPACE
       +-bazel-bin生成的可执行文件
-
+```
 
 
 目前实现的功能：
