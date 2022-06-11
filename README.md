@@ -12,9 +12,12 @@ toyDB
 * 利用SIGALRM和堆，关闭长时间不活跃的连接
 * 添加了一些基于gtest的单元测试
 * 基于跳表实现了简易的K-V存储系统
+ * 目前实现了: skiplist, sortlist
+ * 开放了insert_element, delete_element, has_element, get_element接口
+* 使用protobuf作为序列化\反序列化工具，在server和K-V database之间传递指令
 
 TODO:
 * 仿照为存储系统建立更多的数据结构
    * 如，将sds引入项目，取代char*
-* 使用protobuf作为序列化\反序列化工具，在server和K-V database之间传递指令
+* 可以加入多种语言编写的客户端，如python、java、go
 * 增加一些模板编程的技巧
