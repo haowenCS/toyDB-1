@@ -8,7 +8,8 @@ toyDB
 ```
 toyDB-+-server-+-BUILD
       |        |-服务端组件
-      |-client--BUILD
+      |-client-+-BUILD
+      |        |-客户端组件
       |-database-+-BUILD
       |          |-kv数据库组件
       |-protoc-+-BUILD
