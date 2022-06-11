@@ -2,16 +2,16 @@ load("@rules_cc//cc:defs.bzl", "cc_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library") 
 
 cc_binary(
-	name = "webserver",
+	name = "server",
 	srcs = ["main.cc"],
 	deps = [
-		":server",
+		":server_lib",
 	],
 )
 
 
 cc_library(
-    name = "server",
+    name = "server_lib",
     srcs = glob(["server/**/*.cc"]),
     hdrs = glob(["server/**/*.h"]),
 	deps = [

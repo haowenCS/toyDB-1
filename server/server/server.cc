@@ -1,5 +1,5 @@
 #include <iostream>
-#include "webserver.h"
+#include "server.h"
 
 const int TIMEOUT = 10;
 const int BUFSIZE = 1024;
