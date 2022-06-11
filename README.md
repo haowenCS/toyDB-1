@@ -10,7 +10,7 @@ toyDB-+-server-+-BUILD
       |        |-服务端组件
       |-client--BUILD
       |-database-+-BUILD
-      |          |-源文件
+      |          |-kv数据库组件
       |-protoc-+-BUILD
       |        |-通信协议
       |-test-+-BUILD
