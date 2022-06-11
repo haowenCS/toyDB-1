@@ -11,9 +11,10 @@ toyDB-+-server-+-BUILD
       |-client--BUILD
       |-database-+-BUILD
       |          |-源文件
-      |          +-一次测试用例
       |-protoc-+-BUILD
       |        |-通信协议
+      |-test-+-BUILD
+      |      |-测试用例
       |-WORKSPACE
       +-bazel-bin生成的可执行文件
 ```
