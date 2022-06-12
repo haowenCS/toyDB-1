@@ -32,8 +32,9 @@ toyDB-+-server-+-BUILD
 * 利用SIGALRM和堆，关闭长时间不活跃的连接
 * 添加了一些基于gtest的单元测试
 * 基于跳表实现了简易的K-V存储系统
-      * 目前实现了: skiplist, sortlist
+  * 目前实现了: skiplist, sortlist
 * 开放了insert_element, delete_element, has_element, get_element接口
+  * 在客户端分别使用`set key value`和`del key`和`has key`和`scan key`来调用服务
 * 使用protobuf作为序列化\反序列化工具，在server和K-V database之间传递指令
 
 TODO:
