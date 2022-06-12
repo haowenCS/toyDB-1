@@ -36,7 +36,10 @@ toyDB-+-server-+-BUILD
   * value为包含了某种类型的对象，目前可以作为值的类型有string、skiplist和sortlist
 * K-V存储系统开放了insert_element, delete_element, has_element, get_element接口
   * 在client端分别使用`set key value`和`del key`和`has key`和`scan key`来调用服务
+  * server端执行相应的命令，并根据执行结果返回status
 * 使用protobuf作为序列化\反序列化工具，在server和client之间传递指令
+
+![@S65(N234N6~WW$HVT`YAIW](https://user-images.githubusercontent.com/75946871/173246293-6e98cc4a-68ab-48b9-874b-747d93f92043.png)
 
 TODO:
 * 仿照redis为存储系统建立更多的数据结构
