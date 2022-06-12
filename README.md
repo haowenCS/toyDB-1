@@ -33,9 +33,9 @@ toyDB-+-server-+-BUILD
 * 添加了一些基于gtest的单元测试
 * 基于跳表实现了简易的K-V存储系统
   * 目前实现了: skiplist, sortlist
-* 开放了insert_element, delete_element, has_element, get_element接口
-  * 在客户端分别使用`set key value`和`del key`和`has key`和`scan key`来调用服务
-* 使用protobuf作为序列化\反序列化工具，在server和K-V database之间传递指令
+* K-V存储系统开放了insert_element, delete_element, has_element, get_element接口
+  * 在client端分别使用`set key value`和`del key`和`has key`和`scan key`来调用服务
+* 使用protobuf作为序列化\反序列化工具，在server和client之间传递指令
 
 TODO:
 * 仿照redis为存储系统建立更多的数据结构
