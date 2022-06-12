@@ -15,15 +15,6 @@ WebServer::WebServer(int port, int trigMode, int logLevel, const char* logDir) :
     timer_ = std::unique_ptr<HeapTimer>(new HeapTimer());
     threadpool_ = std::unique_ptr<ThreadPool>(new ThreadPool(8));
 
-    msg::TextMsg msg_tmp;
-    msg_tmp.add_text("Hello");
-    msg_tmp.add_text(",");
-    msg_tmp.add_text("Proto");
-
-    for(int i = 0; i < msg_tmp.text_size(); i++){
-        LOG(INFO, msg_tmp.text(i).c_str());
-    }
-    LOG(INFO, "\n")
 
     Log::Instance()->init(logLevel, logDir, ".log", 1024);
     if(isClose_) { LOG(ERROR,"========== Server init error!=========="); }
@@ -32,6 +23,8 @@ WebServer::WebServer(int port, int trigMode, int logLevel, const char* logDir) :
         LOG(INFO, "Port:%d \n", port_);
         LOG(INFO, "LogSys level: %d \n", logLevel);
     }
+
+    skiplist_ = std::unique_ptr<skiplist_type>(new skiplist_type(10));
 }
 
 WebServer::~WebServer(){
@@ -151,9 +144,18 @@ void WebServer::DoRead_(Conn* client){
         timer_->adjust(client->GetFd(), TIMEOUT*1000);
         int fd = client->GetFd();
         ssize_t bytes_read = read(fd, buf, sizeof(buf));
+
+        msg::DatabaseMsg request_msg;
+        msg::InsertElementRequest request;
+        request_msg.ParseFromString(std::string(buf));
+        request = request_msg.insert_element_request();
+        if(request_msg.msg_type() == msg::INSERT_ELEMENT_REQUEST){
+            LOG(INFO, "Request Key:%s Value:%s \n", request.key().c_str(), request.value().c_str());
+            skiplist_->insert_element(request.key(), request.value());
+        }
         if(bytes_read > 0){
-            LOG(INFO ,"message from client fd %d: %s\n", fd, buf);
-            write(fd, buf, sizeof(buf));
+            // LOG(INFO ,"message from client fd %d: %s\n", fd, buf);
+            // write(fd, buf, sizeof(buf));
         } else if(bytes_read == -1 && errno == EINTR){  //客户端正常中断、继续读取
             continue;
         } else if(bytes_read == -1 && ((errno == EAGAIN) || (errno == EWOULDBLOCK))){//非阻塞IO，这个条件表示数据全部读取完毕

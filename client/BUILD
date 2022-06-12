@@ -6,5 +6,6 @@ cc_binary(
 	srcs = ["client.cc"],
 	deps = [ 
         "//protoc:text_msg_cc_pb", 
+		"//protoc:database_msg_cc_pb",
     ], 
 )

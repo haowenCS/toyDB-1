@@ -19,6 +19,9 @@ cc_library(
 		":threadpool",
 		":logger",
         "//protoc:text_msg_cc_pb", 
+        "//protoc:database_msg_cc_pb",
+        "//database:skiplist",
+        "//database:sortlist",
     ],
 )
 

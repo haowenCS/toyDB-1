@@ -12,4 +12,15 @@ proto_library(
     srcs = ["text_msg.proto"], 
 ) 
 
+
+cc_proto_library( 
+    name = "database_msg_cc_pb", 
+    deps = [":database_msg_pb"], 
+) 
+
+proto_library( 
+    name = "database_msg_pb", 
+    srcs = ["database_msg.proto"], 
+) 
+
 package(default_visibility = ["//visibility:public"]) 

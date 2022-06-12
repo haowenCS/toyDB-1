@@ -2,10 +2,7 @@
 #define WEBSERVER_H_
 
 #include "epoller.h"
-#include "server/connect/conn.h"
-#include "server/threadpool/threadpool.h"
-#include "server/logger/log.h"
-#include "server/timer/heaptimer.h"
+
 #include <memory>		 //unique_ptr
 #include <unordered_map>
 #include <fcntl.h>       // fcntl()
@@ -20,8 +17,15 @@
 #include <signal.h>
 #include <string.h>
 #include <errno.h>
-#include "protoc/text_msg.pb.h"
 
+#include "server/connect/conn.h"
+#include "server/threadpool/threadpool.h"
+#include "server/logger/log.h"
+#include "server/timer/heaptimer.h"
+#include "protoc/text_msg.pb.h"
+#include "protoc/database_msg.pb.h"
+#include "database/skiplist.h"
+#include "database/sortlist.h"
 
 
 class WebServer{
@@ -47,8 +51,10 @@ private:
 
     static int pipefd_[2];
 
+    using skiplist_type = mylist::SkipList<std::string, std::string>;
 
     std::unique_ptr<Epoller> epoller_;
+    std::unique_ptr<skiplist_type> skiplist_;
     std::unique_ptr<HeapTimer> timer_;
     std::unique_ptr<ThreadPool> threadpool_;
     std::unordered_map<int, Conn> clients_;

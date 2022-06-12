@@ -1,0 +1,33 @@
+syntax = "proto3"; 
+
+package msg; 
+
+enum MSG_TYPE{
+    INSERT_ELEMENT_REQUEST = 0;
+    DELETE_ELEMENT_REQUEST = 1;
+    HAS_ELEMENT_REQUEST = 2;
+    GET_ELEMENT_REQUEST = 3;
+
+    INSERT_ELEMENT_RESPONSE = 4;
+    DELETE_ELEMENT_RESPONSE = 5;
+    HAS_ELEMENT_RESPONSE = 6;
+    GET_ELEMENT_RESPONSE = 7;
+}
+
+message InsertElementRequest{
+    string key = 1;
+    string value = 2;
+}
+
+message InsertElementResponse{
+    string status = 2;
+}
+
+
+/*--------------封装---------------*/
+message DatabaseMsg{
+    MSG_TYPE msg_type = 1;
+    InsertElementRequest insert_element_request = 2;
+    InsertElementResponse insert_element_response = 3;
+
+}
