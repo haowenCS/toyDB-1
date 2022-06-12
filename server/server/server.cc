@@ -144,16 +144,31 @@ void WebServer::DoRead_(Conn* client){
         timer_->adjust(client->GetFd(), TIMEOUT*1000);
         int fd = client->GetFd();
         ssize_t bytes_read = read(fd, buf, sizeof(buf));
-
-        msg::DatabaseMsg request_msg;
-        msg::InsertElementRequest request;
-        request_msg.ParseFromString(std::string(buf));
-        request = request_msg.insert_element_request();
-        if(request_msg.msg_type() == msg::INSERT_ELEMENT_REQUEST){
-            LOG(INFO, "Request Key:%s Value:%s \n", request.key().c_str(), request.value().c_str());
-            skiplist_->insert_element(request.key(), request.value());
-        }
         if(bytes_read > 0){
+            msg::DatabaseMsg request_msg;
+            request_msg.ParseFromString(std::string(buf));
+
+            if(request_msg.msg_type() == msg::INSERT_ELEMENT_REQUEST){
+                msg::InsertElementRequest request;
+                request = request_msg.insert_element_request();
+
+                LOG(INFO, "Request Key:%s Value:%s \n", request.key().c_str(), request.value().c_str());
+                bool flag = skiplist_->insert_element(request.key(), request.value());
+                
+                msg::DatabaseMsg response_msg;
+                msg::InsertElementResponse response;
+                if(flag){
+                    response.set_status("OK");
+                }else{
+                    response.set_status("FAIL");
+                }
+                response_msg.set_msg_type(msg::INSERT_ELEMENT_RESPONSE);
+                response_msg.mutable_insert_element_response()->CopyFrom(response);
+                std::string sender;
+                response_msg.SerializeToString(&sender);
+                write(fd, sender.c_str(), sender.length());
+            }
+
             // LOG(INFO ,"message from client fd %d: %s\n", fd, buf);
             // write(fd, buf, sizeof(buf));
         } else if(bytes_read == -1 && errno == EINTR){  //客户端正常中断、继续读取

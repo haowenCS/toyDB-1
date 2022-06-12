@@ -1,0 +1,28 @@
+2022-06-13 01:37:37 [INFO] : ========== Server init ==========
+2022-06-13 01:37:37 [INFO] : Port:10086 
+2022-06-13 01:37:37 [INFO] : LogSys level: 1 
+2022-06-13 01:37:51 [INFO] : Conn[6](127.0.0.1:31371) in, userCount:1
+2022-06-13 01:38:00 [INFO] : Request Key:A Value:BB 
+2022-06-13 01:38:17 [INFO] : client[6]:timeout
+2022-06-13 01:38:17 [INFO] : Conn[6](127.0.0.1:31371) quit, UserCount:0
+2022-06-13 01:39:13 [INFO] : Conn[6](127.0.0.1:52875) in, userCount:1
+2022-06-13 01:39:27 [INFO] : client[6]:timeout
+2022-06-13 01:39:27 [INFO] : Conn[6](127.0.0.1:52875) quit, UserCount:0
+2022-06-13 01:39:33 [INFO] : Conn[6](127.0.0.1:57995) in, userCount:1
+2022-06-13 01:39:34 [INFO] : Conn[6](127.0.0.1:57995) quit, UserCount:0
+2022-06-13 01:39:39 [INFO] : Conn[6](127.0.0.1:60555) in, userCount:1
+2022-06-13 01:39:47 [INFO] : Conn[6](127.0.0.1:60555) quit, UserCount:0
+2022-06-13 01:39:52 [INFO] : Conn[6](127.0.0.1:64139) in, userCount:1
+2022-06-13 01:40:00 [INFO] : Conn[6](127.0.0.1:64139) quit, UserCount:0
+2022-06-13 01:40:05 [INFO] : Conn[6](127.0.0.1:3212) in, userCount:1
+2022-06-13 01:40:12 [INFO] : Request Key:A Value:BBB 
+2022-06-13 01:40:17 [INFO] : Request Key:AAA Value:BB 
+2022-06-13 01:40:37 [INFO] : client[6]:timeout
+2022-06-13 01:40:37 [INFO] : Conn[6](127.0.0.1:3212) quit, UserCount:0
+2022-06-13 01:43:49 [INFO] : ========== Server init ==========
+2022-06-13 01:43:49 [INFO] : Port:10086 
+2022-06-13 01:43:49 [INFO] : LogSys level: 1 
+2022-06-13 01:43:53 [INFO] : Conn[6](127.0.0.1:653) in, userCount:1
+2022-06-13 01:43:55 [INFO] : Request Key:a Value:b 
+2022-06-13 01:43:58 [INFO] : Request Key:a Value:b 
+2022-06-13 01:44:00 [INFO] : Request Key:a Value:c 

@@ -50,9 +50,22 @@ int main(int argc, char** argv) {
 
     connect(sockfd, (sockaddr*)&serv_addr, sizeof(serv_addr)) == -1, "socket connect error";
     
+
+    printf(" _______          _____  ____\n");  
+    printf("|__   __|        |  __ \\|  _ \\ \n");
+    printf("   | | ___  _   _| |  | | |_) |\n");
+    printf("   | |/ _ \\| | | | |  | |  _ <\n");
+    printf("   | | (_) | |_| | |__| | |_) |\n");
+    printf("   |_|\\___/ \\__, |_____/|____/\n");
+    printf("             __/ |\n");         
+    printf("            |___/\n");           
+
+
+
     while(true){
         char buf[1024];
         bzero(&buf, sizeof(buf));
+        printf("<");
         std::cin.getline(buf, 1024);
 
         char *buf_split[3], *p;
@@ -75,16 +88,17 @@ int main(int argc, char** argv) {
             printf("socket already disconnected, can't write any more!\n");
             break;
         }
-        // bzero(&buf  , sizeof(buf));
-        // ssize_t read_bytes = read(sockfd, buf, sizeof(buf));
-        // if(read_bytes > 0){
-        //     printf("message from server: %s\n", buf);
-        // }else if(read_bytes == 0){
-        //     printf("server socket disconnected!\n");
-        //     break;
-        // }else if(read_bytes == -1){
-        //     close(sockfd);
-        // }
+        bzero(&buf  , sizeof(buf));
+        ssize_t read_bytes = read(sockfd, buf, sizeof(buf));
+
+        msg::DatabaseMsg response_msg;
+        response_msg.ParseFromString(std::string(buf));
+
+        if(response_msg.msg_type() == msg::INSERT_ELEMENT_RESPONSE){
+            msg::InsertElementResponse response;
+            response = response_msg.insert_element_response();
+            printf("%s\n", response.status().c_str());
+        }
     }
     close(sockfd);
     return 0;
