@@ -31,8 +31,9 @@ toyDB-+-server-+-BUILD
 * C++11风格的线程池，使用条件变量实现阻塞队列，利用std::function和std::bind将任务函数绑定添加到线程池
 * 利用SIGALRM和堆，关闭长时间不活跃的连接
 * 添加了一些基于gtest的单元测试
-* 基于跳表实现了简易的K-V存储系统
-  * 目前实现了: skiplist, sortlist
+* 实现了简易的K-V存储系统
+  * key为string
+  * value为包含了某种类型的对象，目前可以作为值的类型有string、skiplist和sortlist
 * K-V存储系统开放了insert_element, delete_element, has_element, get_element接口
   * 在client端分别使用`set key value`和`del key`和`has key`和`scan key`来调用服务
 * 使用protobuf作为序列化\反序列化工具，在server和client之间传递指令
@@ -43,3 +44,4 @@ TODO:
 * 可以加入多种语言编写的客户端，如python、java、go
 * 增加一些模板编程的技巧
 * 目前仅支持std::string类型的key和value, 还没想好客户端在调用服务(和服务端解析)时，如何判定key和value类型
+* 加入垃圾回收机制
