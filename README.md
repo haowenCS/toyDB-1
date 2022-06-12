@@ -42,3 +42,4 @@ TODO:
    * 如，将sds引入项目，取代char[]
 * 可以加入多种语言编写的客户端，如python、java、go
 * 增加一些模板编程的技巧
+* 目前仅支持std::string类型的key和value, 还没想好客户端在调用服务(和服务端解析)时，如何判定key和value类型
