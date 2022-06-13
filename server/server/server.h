@@ -15,8 +15,10 @@
 #include <time.h>
 #include <unistd.h>
 #include <signal.h>
-#include <string.h>
+#include <string>
 #include <errno.h>
+#include <iostream>
+#include <stdexcept>
 
 #include "server/connect/conn.h"
 #include "server/threadpool/threadpool.h"
@@ -26,6 +28,8 @@
 #include "protoc/database_msg.pb.h"
 #include "database/skiplist.h"
 #include "database/sortlist.h"
+#include "database/toydb.h"
+
 
 
 class WebServer{
@@ -51,10 +55,11 @@ private:
 
     static int pipefd_[2];
 
-    using skiplist_type = mylist::SkipList<std::string, std::string>;
+    using db_type = mylist::SkipList<std::string, toydb::ValueObject*>;
+    // using db_type = std::map<std::string, ValueObject>;
 
     std::unique_ptr<Epoller> epoller_;
-    std::unique_ptr<skiplist_type> skiplist_;
+    std::unique_ptr<db_type> toyDB_;
     std::unique_ptr<HeapTimer> timer_;
     std::unique_ptr<ThreadPool> threadpool_;
     std::unordered_map<int, Conn> clients_;
@@ -76,6 +81,8 @@ private:
     void Addsig_(int sig);
     void TimerHandler_();
 
+    void deal_put_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &response_msg, std::string &sender);
+    void deal_get_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &response_msg, std::string &sender);
 };
 
 

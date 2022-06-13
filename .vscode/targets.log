@@ -2,60 +2,33 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target 'all'.  Stop.
 
 # GNU Make 4.2.1
- 
 # Built for x86_64-pc-linux-gnu
- 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
- 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
- 
 # This is free software: you are free to change and redistribute it.
- 
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
- 
-# Make data base, printed on Mon Jun 13 01:07:52 2022
- 
+# Make data base, printed on Mon Jun 13 17:23:29 2022
 
 # Variables
- 
 
- 
 # automatic
- 
 <D = $(patsubst %/,%,$(dir $<))
- 
 # automatic
- 
 ?F = $(notdir $?)
- 
 # default
- 
 .SHELLFLAGS := -c
- 
 # environment
- 
 XDG_SESSION_CLASS = user
- 
 # environment
- 
 VSCODE_AGENT_FOLDER = /home/ubuntu/.vscode-server
- 
 # environment
- 
 XDG_SESSION_TYPE = tty
- 
 # environment
- 
 VSCODE_LOG_NATIVE = false
- 
 # automatic
- 
 ?D = $(patsubst %/,%,$(dir $?))
- 
 # automatic
- 
 @D = $(patsubst %/,%,$(dir $@))
 # environment
 NEMU_HOME = /home/ubuntu/ics2021/nemu
@@ -86,7 +59,7 @@ VSCODE_CWD = /home/ubuntu
 # environment
 AM_HOME = /home/ubuntu/ics2021/abstract-machine
 # environment
-SSH_CONNECTION = 153.3.60.44 29294 10.0.16.12 22
+SSH_CONNECTION = 153.3.60.168 30267 10.0.16.12 22
 # environment
 PATH = /home/ubuntu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/bin:/snap/bin
 # environment
@@ -94,7 +67,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-71e4f44f-39d5-4cc4-ab5b-ed238bc35159.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-9c0339df-d74d-465b-be89-86c97651bc94.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # automatic
@@ -116,7 +89,7 @@ HOME = /home/ubuntu
 # environment
 LOGNAME = ubuntu
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 +F = $(notdir $+)
 # environment
@@ -132,7 +105,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = 31598
+XDG_SESSION_ID = 33017
 # environment
 USER = ubuntu
 # makefile
@@ -152,7 +125,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 153.3.60.44 29294 22
+SSH_CLIENT = 153.3.60.168 30267 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -252,6 +225,6 @@ GNUmakefile:
 # strcache performance: lookups = 30 / hit rate = 10%
 # hash-table stats:
 # Load=27/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Mon Jun 13 01:07:52 2022
+# Finished Make data base on Mon Jun 13 17:23:29 2022
 
  

@@ -164,7 +164,9 @@ bool SkipList<K, V>::insert_element(const K key, const V value) {
     current_node = current_node->forward[0];
     
     if (current_node != nullptr && current_node->get_key() == key) {
-        std::cout << "key: " << key << ", exists" << std::endl;
+        // std::cout << "key: " << key << ", exists" << std::endl;
+        // delete_element(key);
+        // return insert_element(key, value);
         return false;
     }
 
@@ -184,7 +186,7 @@ bool SkipList<K, V>::insert_element(const K key, const V value) {
         update_nodes[i]->forward[i] = inserted_node;
     }
 
-    std::cout << "Successfully inserted key:" << key << ", value:" << value << std::endl;
+    // std::cout << "Successfully inserted key:" << key << ", value:" << value << std::endl;
 
     element_count_ ++;
     return true;

@@ -22,6 +22,7 @@ cc_library(
         "//protoc:database_msg_cc_pb",
         "//database:skiplist",
         "//database:sortlist",
+        "//database:toydb",
     ],
 )
 

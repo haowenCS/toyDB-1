@@ -1,33 +1,35 @@
 #include "database/skiplist.h"
+#include "database/toydb.h"
+
 #include <iostream>
+#include <string>
 #include "gtest/gtest.h"
 
 using namespace mylist;
 
 TEST(testSkipList, test0){
 
-    SkipList<int, std::string> skipList(10);
+    SkipList<std::string, toydb::ValueObject*> skipList(10);
     
-    skipList.insert_element(1, "hello");
-    skipList.insert_element(2, ",");
-    skipList.insert_element(3, "skiplist");
+    toydb::ValueObject* object = new toydb::ValueObject();
+    object->value_type = toydb::DOUBLE;
+    std::string str_("1");
+    double val = stod(str_);
+    object->value.double_type = val;
 
-    skipList.delete_element(1);
+    toydb::ValueObject* object2 = new toydb::ValueObject();
+    object2->value_type = toydb::STRING;
+    object2->value.ptr_type = static_cast<void*>(new std::string("abc"));
 
-    skipList.delete_element(1);
+    skipList.insert_element("a", object);
+    skipList.insert_element("b", object2);
 
-    std::string s;
-    if(skipList.has_element(2)){
-        s = skipList.get_element(2);
-    }
 
-    bool b1 = skipList.has_element(1);
-    bool b2 = skipList.has_element(2);
+    bool b = skipList.has_element("a");
+    toydb::ValueObject* object_1 = skipList.get_element("a");
+    toydb::ValueObject* object_2 = skipList.get_element("b");
 
-    EXPECT_EQ(b1, false);
-    EXPECT_EQ(b2, true);
-    EXPECT_EQ(s, ",");
-
-    skipList.dump_file();
-    // skipList.load_file();
+    EXPECT_EQ(b, true);
+    EXPECT_EQ(object_1->value_type, toydb::DOUBLE);
+    EXPECT_EQ(object_2->value_type, toydb::STRING);
 }

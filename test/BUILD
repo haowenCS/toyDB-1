@@ -3,6 +3,7 @@ cc_test(
   srcs = ["test_skiplist.cc"],
   deps = [
     "//database:skiplist",
+    "//database:toydb",
     "@com_google_googletest//:gtest_main",
   ],
 )

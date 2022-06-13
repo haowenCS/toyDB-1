@@ -7,5 +7,6 @@ cc_binary(
 	deps = [ 
         "//protoc:text_msg_cc_pb", 
 		"//protoc:database_msg_cc_pb",
+		"//database:toydb",
     ], 
 )

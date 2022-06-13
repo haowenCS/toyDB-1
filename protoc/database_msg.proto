@@ -14,13 +14,31 @@ enum MSG_TYPE{
     GET_ELEMENT_RESPONSE = 7;
 }
 
+enum VALUE_TYPE{
+    DOUBLE = 0;
+    STRING = 1;
+    DOUBLE_LIST = 2;
+    STRING_LIST = 3;
+}
+
 message InsertElementRequest{
     string key = 1;
-    string value = 2;
+    repeated string value = 2;
+    VALUE_TYPE value_type = 3;
 }
 
 message InsertElementResponse{
-    string status = 2;
+    string status = 1;
+}
+
+message GetElementRequest{
+    string key = 1;
+}
+
+message GetElementResponse{
+    string status = 1;
+    repeated string value = 2;
+    VALUE_TYPE value_type = 3;
 }
 
 
@@ -29,5 +47,6 @@ message DatabaseMsg{
     MSG_TYPE msg_type = 1;
     InsertElementRequest insert_element_request = 2;
     InsertElementResponse insert_element_response = 3;
-
+    GetElementRequest get_element_request = 4;
+    GetElementResponse get_element_response = 5;
 }

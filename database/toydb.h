@@ -2,34 +2,27 @@
 #define TOY_DB_H
 
 #include <string>
-#include <vector>
+#include <memory>
+#include <map>
 
-enum{
-    STRING = 0,
-    SORTLIST,
+namespace toydb{
+
+enum ValueType{
+    DOUBLE = 0,
+    STRING,
+    DOUBLE_LIST,
+    STRING_LIST,
     SET,
     HASH,
-}ValueType;
-
-struct PairObject{
-    std::String key;
-    ValueType value_type;
-    void* value_ptr;
 };
 
-class ToyDB{
-public:
-    ToyDB() = default;
-    ~ToyDB() = default;
 
-    // bool insert_pair(PairObject obj){
-    // }
-
-    // bool delete_pair_by_key(std::string key){
-    // }
-
-private:
-    std::vector<PairObject> pairs_;
-}
-
+struct ValueObject{
+    ValueType value_type;
+    union Value{
+       double double_type;
+       void* ptr_type; 
+    }value;
+};
+}   //namespace toyDB
 #endif //TOY_DB_H
