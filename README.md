@@ -39,6 +39,7 @@ toyDB-+-server-+-BUILD
   * server端执行相应的命令，并根据执行结果返回status
   * 若没有找到key, 会返回`NIL`, 插入成功返回`OK`
   * 若以列表作为value，列表中的全部值应为同一种类型，如：全为double或全为string
+  * 若插入字符作为value，应被双引号`""`包围，否则暂认为是double
 * 使用protobuf作为序列化\反序列化工具，在server和client之间传递指令
 
 ![N8@YWH5WCK}ZKUDG67YE}P9](https://user-images.githubusercontent.com/75946871/173413665-d06bcaeb-c0eb-48e7-ad34-7264659d2c40.png)
