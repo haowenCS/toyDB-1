@@ -33,18 +33,20 @@ toyDB-+-server-+-BUILD
 * 添加了一些基于gtest的单元测试
 * 实现了简易的K-V存储系统
   * key为string
-  * value为包含了某种类型的对象，目前可以作为值的类型有string、skiplist和sortlist
+  * value为包含了某种类型的对象，目前可以作为值的类型有string、double、string_list、double_list，但这些类型的设计对使用者透明，程序会自动判断
 * K-V存储系统开放了insert_element, delete_element, has_element, get_element接口
-  * 在client端分别使用`set key value`和`del key`和`has key`和`scan key`来调用服务
+  * 在client端分别使用`set key value`和`del key`和`has key`和`get key`来调用服务
   * server端执行相应的命令，并根据执行结果返回status
+  * 若没有找到key, 会返回`NIL`, 插入成功返回`OK`
 * 使用protobuf作为序列化\反序列化工具，在server和client之间传递指令
 
-![@S65(N234N6~WW$HVT`YAIW](https://user-images.githubusercontent.com/75946871/173246293-6e98cc4a-68ab-48b9-874b-747d93f92043.png)
+![N8@YWH5WCK}ZKUDG67YE}P9](https://user-images.githubusercontent.com/75946871/173413665-d06bcaeb-c0eb-48e7-ad34-7264659d2c40.png)
+
 
 TODO:
 * 仿照redis为存储系统建立更多的数据结构
    * 如，将sds引入项目，取代char[]
 * 可以加入多种语言编写的客户端，如python、java、go
 * 增加一些模板编程的技巧
-* 目前仅支持std::string类型的key和value, 还没想好客户端在调用服务(和服务端解析)时，如何判定key和value类型
+* 目前仅支持std::string类型的key
 * 加入垃圾回收机制
