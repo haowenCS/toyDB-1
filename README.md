@@ -36,6 +36,7 @@ toyDB-+-server-+-BUILD
   * 使用ValueObject封装指向value的指针，目前可以作为value的类型有string、double、string_list、double_list
   * 使用union以节省空间，如果value是double或其它简单类型(和void\*所占空间相同)，就直接存储在union里，否则会存储指向value的指针。但要注意析构，避免内存泄露
   ```c
+  /*database/toydb.h*/
   enum ValueType{
     NONE = 0,
     DOUBLE,
