@@ -245,6 +245,31 @@ void WebServer::deal_get_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &r
     response_msg.SerializeToString(&sender);
 }
 
+
+void WebServer::deal_del_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &response_msg, std::string &sender){
+    msg::DeleteElementRequest request;
+    msg::DeleteElementResponse response;
+
+    request = request_msg.delete_element_request();
+
+    if(!toyDB_->has_element(request.key())){
+        response.set_status("NIL");
+        LOG(INFO, "Request DEL Key: %s, but NIL\n", request.key().c_str());
+    }else{
+        response.set_status("OK");
+        toydb::ValueObject* object;
+        object = toyDB_->get_element(request.key());
+        toyDB_->delete_element(request.key());
+        delete object;
+        object = nullptr;
+        LOG(INFO, "Request DEL Key: %s, succeed\n", request.key().c_str());
+    }
+
+    response_msg.set_msg_type(msg::DELETE_ELEMENT_RESPONSE);
+    response_msg.mutable_delete_element_response()->CopyFrom(response);
+    response_msg.SerializeToString(&sender);
+}
+
 void WebServer::DoRead_(Conn* client){
     char buf[BUFSIZE];
     while(true){    //由于使用非阻塞IO，需要不断读取，直到全部读取完毕
@@ -259,11 +284,15 @@ void WebServer::DoRead_(Conn* client){
 
             request_msg.ParseFromString(std::string(buf));
 
+            //接受request，并根据不同的请求类型，创建不同类型的response，并序列化至sender
             if(request_msg.msg_type() == msg::INSERT_ELEMENT_REQUEST){
                 deal_put_msg_(request_msg, response_msg, sender);
             }
             else if(request_msg.msg_type() == msg::GET_ELEMENT_REQUEST){
                 deal_get_msg_(request_msg, response_msg, sender);
+            }
+            else if(request_msg.msg_type() == msg::DELETE_ELEMENT_REQUEST){
+                deal_del_msg_(request_msg, response_msg, sender);
             }
 
             write(fd, sender.c_str(), sender.length());     //发送response，由于进行了序列化，就屏蔽了不同类型response的差异，client读取字节流之后再解析即可

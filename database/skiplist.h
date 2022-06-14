@@ -167,7 +167,8 @@ bool SkipList<K, V>::insert_element(const K key, const V value) {
         // std::cout << "key: " << key << ", exists" << std::endl;
         // delete_element(key);
         // return insert_element(key, value);
-        return false;
+        current_node->set_value(value);
+        return true;
     }
 
     int random_height = get_random_height();
@@ -185,8 +186,6 @@ bool SkipList<K, V>::insert_element(const K key, const V value) {
         inserted_node->forward[i] = update_nodes[i]->forward[i];
         update_nodes[i]->forward[i] = inserted_node;
     }
-
-    // std::cout << "Successfully inserted key:" << key << ", value:" << value << std::endl;
 
     element_count_ ++;
     return true;
@@ -219,7 +218,7 @@ void SkipList<K, V>::delete_element(K key) {
         while (skip_list_height_ > 0 && header_->forward[skip_list_height_] == nullptr) {
             skip_list_height_ --; 
         }
-        std::cout << "Successfully deleted key "<< key << std::endl;
+        // std::cout << "Successfully deleted key "<< key << std::endl;
         element_count_ --;
 
         delete current_node;
@@ -262,7 +261,7 @@ V SkipList<K, V>::get_element(K key) {
     if (current_node != nullptr && current_node->get_key() == key){
         return current_node->get_value();
     }else{
-        std::cout << "Can't find key "<< key << std::endl;
+        // std::cout << "Can't find key "<< key << std::endl;
         return V(0);
     }
 }

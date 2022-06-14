@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 13 17:23:29 2022
+# Make data base, printed on Tue Jun 14 21:37:47 2022
 
 # Variables
 
@@ -59,7 +59,7 @@ VSCODE_CWD = /home/ubuntu
 # environment
 AM_HOME = /home/ubuntu/ics2021/abstract-machine
 # environment
-SSH_CONNECTION = 153.3.60.168 30267 10.0.16.12 22
+SSH_CONNECTION = 153.3.60.168 39866 10.0.16.12 22
 # environment
 PATH = /home/ubuntu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/bin:/snap/bin
 # environment
@@ -67,7 +67,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-9c0339df-d74d-465b-be89-86c97651bc94.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-8de58699-bd37-4fd0-93b2-17565acbf5e0.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # automatic
@@ -89,7 +89,7 @@ HOME = /home/ubuntu
 # environment
 LOGNAME = ubuntu
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 +F = $(notdir $+)
 # environment
@@ -105,7 +105,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = 33017
+XDG_SESSION_ID = 35479
 # environment
 USER = ubuntu
 # makefile
@@ -125,7 +125,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 153.3.60.168 30267 22
+SSH_CLIENT = 153.3.60.168 39866 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -225,6 +225,6 @@ GNUmakefile:
 # strcache performance: lookups = 30 / hit rate = 10%
 # hash-table stats:
 # Load=27/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Mon Jun 13 17:23:29 2022
+# Finished Make data base on Tue Jun 14 21:37:47 2022
 
  

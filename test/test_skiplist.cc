@@ -23,7 +23,7 @@ TEST(testSkipList, test0){
 
     skipList.insert_element("a", object);
     skipList.insert_element("b", object2);
-
+    skipList.insert_element("b", object);  
 
     bool b = skipList.has_element("a");
     toydb::ValueObject* object_1 = skipList.get_element("a");
@@ -31,5 +31,9 @@ TEST(testSkipList, test0){
 
     EXPECT_EQ(b, true);
     EXPECT_EQ(object_1->value_type, toydb::DOUBLE);
-    EXPECT_EQ(object_2->value_type, toydb::STRING);
+    EXPECT_EQ(object_2->value_type, toydb::DOUBLE);
+
+    skipList.delete_element("a");
+    b = skipList.has_element("a");
+    EXPECT_EQ(b, false);
 }

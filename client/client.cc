@@ -46,7 +46,7 @@ bool deal_set(char** command, std::string& sender, int parameter_cnt){
         if(parameter_cnt == 2 && !is_string){
             try{stod(std::string(command[2]));}
             catch(std::invalid_argument&){
-                printf("ERROR, Values is requested to be currect tyle\n");
+                printf("ERROR, Values is requested to be correct type\n");
                 return false;
             }
             request.set_value_type(msg::DOUBLE);
@@ -58,12 +58,12 @@ bool deal_set(char** command, std::string& sender, int parameter_cnt){
             request.set_value_type(msg::DOUBLE_LIST);
             for(int i = 3; i <= parameter_cnt; i++){
                 if(Is_sting_type(command[i]) != is_string){
-                    printf("ERROR, Values is requested to be currect tyle\n");
+                    printf("ERROR, Values is requested to be correct type\n");
                     return false;
                 }
                 try{stod(std::string(command[i]));}
                 catch(std::invalid_argument&){
-                    printf("ERROR, Values is requested to be currect tyle\n");
+                    printf("ERROR, Values is requested to be correct type\n");
                     return false;
                 }
                 request.add_value(std::string(command[i]));
@@ -73,7 +73,7 @@ bool deal_set(char** command, std::string& sender, int parameter_cnt){
             request.set_value_type(msg::STRING_LIST);
             for(int i = 3; i <= parameter_cnt; i++){
                 if(Is_sting_type(command[i]) != is_string){
-                    printf("ERROR, Values is requested to be same tyle\n");
+                    printf("ERROR, Values is requested to be same type\n");
                     return false;
                 }
                 request.add_value(std::string(command[i]));
@@ -101,6 +101,22 @@ bool deal_get(char** command, std::string& sender, int parameter_cnt){
     return true;
 }
 
+bool deal_del(char** command, std::string& sender, int parameter_cnt){
+    if(parameter_cnt != 1){
+            printf("ERROR, Wrong parameter of `DEL`, expect 2 but %d\n", parameter_cnt);
+            return false;
+    }
+    msg::DatabaseMsg request_msg;
+    msg::DeleteElementRequest request;
+
+    request.set_key(std::string(command[1]));
+    request_msg.set_msg_type(msg::DELETE_ELEMENT_REQUEST);
+    request_msg.mutable_delete_element_request()->CopyFrom(request);
+    request_msg.SerializeToString(&sender);
+
+    return true;
+}
+
 bool CommandParser(char** command, std::string& sender, int parameter_cnt){    
     if(strcmp(command[0],"") == 0){
         return false;
@@ -110,6 +126,9 @@ bool CommandParser(char** command, std::string& sender, int parameter_cnt){
     }
     else if(strcmp(command[0],"get") == 0 || strcmp(command[0],"GET") == 0 ){
         return deal_get(command, sender, parameter_cnt);
+    }
+    else if(strcmp(command[0],"DEL") == 0 || strcmp(command[0],"del") == 0 ){
+        return deal_del(command, sender, parameter_cnt);
     }
     else{
         printf("ERROR, Command %s is not supported\n", command[0]);
@@ -215,6 +234,11 @@ int main(int argc, char** argv) {
                     printf("\n");
                 }
             }
+        }
+        else if(response_msg.msg_type() == msg::DELETE_ELEMENT_RESPONSE){
+            msg::DeleteElementResponse response;
+            response = response_msg.delete_element_response();
+            printf("%s\n", response.status().c_str());
         }
     }
     close(sockfd);
