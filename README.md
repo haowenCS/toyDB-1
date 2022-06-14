@@ -67,6 +67,7 @@ toyDB-+-server-+-BUILD
 
 
 TODO:
+* 增加持久化方法
 * 仿照redis为存储系统建立更多的数据结构
    * 如，将sds引入项目，取代char[]
 * 可以加入多种语言编写的客户端，如python、java、go
