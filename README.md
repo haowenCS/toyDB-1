@@ -42,13 +42,12 @@ toyDB-+-server-+-BUILD
   * 若插入字符作为value，应被双引号`""`包围，否则暂认为是double
 * 使用protobuf作为序列化\反序列化工具，在server和client之间传递指令
 
-![N8@YWH5WCK}ZKUDG67YE}P9](https://user-images.githubusercontent.com/75946871/173413665-d06bcaeb-c0eb-48e7-ad34-7264659d2c40.png)
+![1655220880(1)](https://user-images.githubusercontent.com/75946871/173618118-95eb24ae-517a-4c94-bfae-3f9fb9920a77.png)
 
 
 TODO:
 * 仿照redis为存储系统建立更多的数据结构
    * 如，将sds引入项目，取代char[]
-* 加锁，支持并发
 * 可以加入多种语言编写的客户端，如python、java、go
 * 增加一些模板编程的技巧
 * 目前仅支持std::string类型的key
