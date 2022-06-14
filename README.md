@@ -33,7 +33,27 @@ toyDB-+-server-+-BUILD
 * 添加了一些基于gtest的单元测试
 * 基于skiplist和std::unordered_map实现了简易的K-V存储系统，后期可以考虑增加多种存储结构
   * key为string
-  * value为包含了某种类型的对象，目前可以作为值的类型有string、double、string_list、double_list，但这些类型的设计对使用者透明，程序会自动判断
+  * 使用ValueObject封装指向value的指针，目前可以作为value的类型有string、double、string_list、double_list
+  * 使用union以节省空间，如果value是double或其它简单类型(和void\*所占空间相同)，就直接存储在union里，否则会存储指向value的指针。但要注意析构，避免内存泄露
+  ```c
+  enum ValueType{
+    NONE = 0,
+    DOUBLE,
+    STRING,
+    DOUBLE_LIST,
+    STRING_LIST,
+  };
+  
+  class ValueObject{
+  public:
+    ...//省略了构造和析构函数
+    ValueType value_type;
+    union{
+       double double_type;
+       void* ptr_type; 
+    }value;
+  };
+  ```
 * K-V存储系统开放了insert_element, delete_element, has_element, get_element接口
   * 在client端分别使用`set key value`和`del key`和`has key`和`get key`来调用服务
   * server端执行相应的命令，并根据执行结果返回status
