@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <map>
+#include "server/logger/log.h"
 
 namespace toydb{
 

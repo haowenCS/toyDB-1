@@ -5,7 +5,7 @@
 #include <string>
 #include "gtest/gtest.h"
 
-using namespace mylist;
+using namespace toydb;
 
 TEST(testSkipList, test0){
 

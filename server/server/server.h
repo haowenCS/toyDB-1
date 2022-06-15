@@ -22,7 +22,6 @@
 
 #include "server/connect/conn.h"
 #include "server/threadpool/threadpool.h"
-#include "server/logger/log.h"
 #include "server/timer/heaptimer.h"
 #include "protoc/text_msg.pb.h"
 #include "protoc/database_msg.pb.h"
@@ -35,13 +34,12 @@
 class WebServer{
 public:
     /*端口, epoll激发模式*/
-    explicit WebServer(int port, int trigMode, int logLevel, const char* logDir);
+    explicit WebServer(int port, int trigMode, int logLevel, const char* logDir, const bool loadDepository);
     ~WebServer();
 
     void Run();
 
     static void SigHandler(int sig);
-
     friend void doTimeout(int fd, WebServer* webserver);
 
 private:
@@ -55,7 +53,7 @@ private:
 
     static int pipefd_[2];
 
-    using db_type = mylist::SkipList<std::string, toydb::ValueObject*>;
+    using db_type = toydb::SkipList<std::string>;
     // using db_type = std::map<std::string, ValueObject>;
 
     std::unique_ptr<Epoller> epoller_;

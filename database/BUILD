@@ -8,11 +8,17 @@ cc_library(
 cc_library(
   name = "skiplist",
   hdrs = ["skiplist.h"],
+  deps = [
+    ":toydb",
+  ],
 )
 
 cc_library(
   name = "sortlist",
   hdrs = ["sortlist.h"],
+  deps = [
+    ":skiplist",
+  ],
 )
 
 

@@ -8,7 +8,7 @@ int WebServer::pipefd_[2];
 bool WebServer::isTimeOut_ = false;
 
 
-WebServer::WebServer(int port, int trigMode, int logLevel, const char* logDir) : port_(port), isClose_(false){
+WebServer::WebServer(int port, int trigMode, int logLevel, const char* logDir, bool loadDepository) : port_(port), isClose_(false){
     listenEvent_ = EPOLLRDHUP | EPOLLIN; //断开连接 | 接受连接
     InitEventMode_(trigMode);
     InitSocket_();
@@ -23,8 +23,12 @@ WebServer::WebServer(int port, int trigMode, int logLevel, const char* logDir) :
         LOG(INFO, "Port:%d \n", port_);
         LOG(INFO, "LogSys level: %d \n", logLevel);
     }
-
-    toyDB_ = std::make_unique<db_type>(10);
+    
+    toyDB_ = std::make_unique<db_type>(18);
+    if(loadDepository){
+        LOG(INFO, "========== Load depository ==========\n");
+        toyDB_->load_file();
+    }
 }
 
 WebServer::~WebServer(){
@@ -122,6 +126,7 @@ void WebServer::Run(){
             }
         }
         if(isTimeOut_){
+            toyDB_->dump_file();
             TimerHandler_();
             isTimeOut_ = false;
         }
@@ -159,7 +164,7 @@ void WebServer::deal_put_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &r
             object->value.ptr_type = static_cast<void*>(new std::string(request.value(0)));
         }
         else if(request.value_type() == msg::DOUBLE_LIST){
-            LOG(INFO, "Request Insert Key:%s Value:(double) ", request.key().c_str());
+            LOG(INFO, "Request Insert Key:%s Value:(double list) ", request.key().c_str());
             object->value_type = toydb::DOUBLE_LIST;
             std::vector<double>* list = new std::vector<double>();
             for(int i = 0; i < request.value_size(); i++){
@@ -170,7 +175,7 @@ void WebServer::deal_put_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &r
             object->value.ptr_type = static_cast<void*>(list);                        
         }
         else if(request.value_type() == msg::STRING_LIST){
-            LOG(INFO, "Request Insert Key:%s Value:(sring) ", request.key().c_str());
+            LOG(INFO, "Request Insert Key:%s Value:(sring list) ", request.key().c_str());
             object->value_type = toydb::STRING_LIST;
             std::vector<std::string>* list = new std::vector<std::string>();
             for(int i = 0; i < request.value_size(); i++){
@@ -206,24 +211,24 @@ void WebServer::deal_get_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &r
 
     if(!toyDB_->has_element(request.key())){
         response.set_status("NIL");
-        LOG(INFO, "Request GET Key: %s, but NIL\n", request.key().c_str());
+        LOG(INFO, "Request GET Key: %s, Value(NIL)\n", request.key().c_str());
     }else{
         response.set_status("OK");
         toydb::ValueObject* object;
         object = toyDB_->get_element(request.key());
 
         if(object->value_type == toydb::DOUBLE){
-            LOG(INFO, "Request GET Key: %s, Value type:%s\n", request.key().c_str(), "double");
+            LOG(INFO, "Request GET Key: %s, Value(%s)\n", request.key().c_str(), "double");
             response.set_value_type(msg::DOUBLE);
             response.add_value(std::to_string(object->value.double_type));
         }
         else if(object->value_type == toydb::STRING){
-            LOG(INFO, "Request GET Key: %s, Value type:%s\n", request.key().c_str(), "string");
+            LOG(INFO, "Request GET Key: %s, Value(%s)\n", request.key().c_str(), "string");
             response.set_value_type(msg::STRING);
             response.add_value(*static_cast<std::string*>(object->value.ptr_type));
         }
         else if(object->value_type == toydb::DOUBLE_LIST){
-            LOG(INFO, "Request GET Key: %s, Value type:%s\n", request.key().c_str(), "double list");
+            LOG(INFO, "Request GET Key: %s, Value(%s)\n", request.key().c_str(), "double list");
             response.set_value_type(msg::DOUBLE_LIST);
             std::vector<double>* vec = static_cast<std::vector<double>*>(object->value.ptr_type);
             for(int i = 0; i < vec->size(); i++){
@@ -231,7 +236,7 @@ void WebServer::deal_get_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &r
             }
         }
         else if(object->value_type = toydb::STRING_LIST){
-            LOG(INFO, "Request GET Key: %s, Value type:%s\n", request.key().c_str(), "string list");
+            LOG(INFO, "Request GET Key: %s, Value(%s)\n", request.key().c_str(), "string list");
             response.set_value_type(msg::STRING_LIST);
             std::vector<std::string>* vec = static_cast<std::vector<std::string>*>(object->value.ptr_type);
             for(int i = 0; i < vec->size(); i++){

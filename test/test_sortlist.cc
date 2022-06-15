@@ -2,7 +2,7 @@
 #include <iostream>
 #include "gtest/gtest.h"
 
-using namespace mylist;
+using namespace toydb;
 
 TEST(testSortList, test0){
     SortList<int, std::string> sortlist;

@@ -177,7 +177,7 @@ int main(int argc, char** argv) {
             use_command_cache = false;
         }
 
-        char *buf_split[3], *p;
+        char *buf_split[10], *p;
         p = NULL;
         p = strtok(buf, " ");
         int cnt = 0;

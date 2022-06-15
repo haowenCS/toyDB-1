@@ -2,37 +2,68 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target 'all'.  Stop.
 
 # GNU Make 4.2.1
+ 
 # Built for x86_64-pc-linux-gnu
+ 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
+ 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+ 
 # This is free software: you are free to change and redistribute it.
+ 
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Tue Jun 14 21:37:47 2022
+ 
+# Make data base, printed on Wed Jun 15 23:12:10 2022
+ 
 
 # Variables
+ 
 
+ 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
+ 
 # automatic
+ 
 ?F = $(notdir $?)
+ 
 # default
+ 
 .SHELLFLAGS := -c
+ 
 # environment
+ 
 XDG_SESSION_CLASS = user
+ 
 # environment
+ 
 VSCODE_AGENT_FOLDER = /home/ubuntu/.vscode-server
+ 
 # environment
+ 
 XDG_SESSION_TYPE = tty
+ 
 # environment
+ 
 VSCODE_LOG_NATIVE = false
+ 
 # automatic
+ 
 ?D = $(patsubst %/,%,$(dir $?))
+ 
 # automatic
+ 
 @D = $(patsubst %/,%,$(dir $@))
+ 
 # environment
+ 
 NEMU_HOME = /home/ubuntu/ics2021/nemu
+ 
 # automatic
+ 
 @F = $(notdir $@)
 # default
 MAKE_VERSION := 4.2.1
@@ -41,7 +72,7 @@ CURDIR := /home/ubuntu/myweb
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{}}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_translationsConfigFile":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/tcf.json","_cacheRoot":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_resolvedLanguagePackCoreLocation":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /home/ubuntu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/node
 # makefile
@@ -59,7 +90,7 @@ VSCODE_CWD = /home/ubuntu
 # environment
 AM_HOME = /home/ubuntu/ics2021/abstract-machine
 # environment
-SSH_CONNECTION = 153.3.60.168 39866 10.0.16.12 22
+SSH_CONNECTION = 153.3.60.168 53283 10.0.16.12 22
 # environment
 PATH = /home/ubuntu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/bin:/snap/bin
 # environment
@@ -67,7 +98,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-8de58699-bd37-4fd0-93b2-17565acbf5e0.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-dfb4bd60-e2e2-47b3-a3cb-acfccf9d217d.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # automatic
@@ -105,7 +136,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = 35479
+XDG_SESSION_ID = 2
 # environment
 USER = ubuntu
 # makefile
@@ -125,7 +156,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 153.3.60.168 39866 22
+SSH_CLIENT = 153.3.60.168 53283 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -225,6 +256,6 @@ GNUmakefile:
 # strcache performance: lookups = 30 / hit rate = 10%
 # hash-table stats:
 # Load=27/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Tue Jun 14 21:37:47 2022
+# Finished Make data base on Wed Jun 15 23:12:10 2022
 
  

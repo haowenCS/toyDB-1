@@ -1,0 +1,123 @@
+2022-06-16 00:17:07 [INFO] : ========== Server init ==========
+2022-06-16 00:17:07 [INFO] : Port:10086 
+2022-06-16 00:17:07 [INFO] : LogSys level: 1 
+2022-06-16 00:17:07 [INFO] : ========== Load depository ==========
+2022-06-16 00:17:07 [INFO] : =================================
+2022-06-16 00:17:09 [INFO] : Conn[6](127.0.0.1:50826) in, userCount:1
+2022-06-16 00:17:13 [INFO] : Request Insert Key:a Value:(double) 2022-06-16 00:17:13 [INFO] :  1,2022-06-16 00:17:13 [INFO] :  2,2022-06-16 00:17:13 [INFO] :  3,2022-06-16 00:17:13 [INFO] :  4,2022-06-16 00:17:13 [INFO] :  5,2022-06-16 00:17:13 [INFO] : 
+2022-06-16 00:18:10 [INFO] : ========== Server init ==========
+2022-06-16 00:18:10 [INFO] : Port:10086 
+2022-06-16 00:18:10 [INFO] : LogSys level: 1 
+2022-06-16 00:18:10 [INFO] : ========== Load depository ==========
+2022-06-16 00:18:10 [INFO] : =================================
+2022-06-16 00:18:12 [INFO] : Conn[6](127.0.0.1:2187) in, userCount:1
+2022-06-16 00:18:24 [INFO] : Request Insert Key:a Value:(sring) 2022-06-16 00:18:24 [INFO] :  "12131313",2022-06-16 00:18:24 [INFO] :  "!2313131",2022-06-16 00:18:24 [INFO] :  "fafaefafaf",2022-06-16 00:18:24 [INFO] :  "123faw4ff",2022-06-16 00:18:24 [INFO] : 
+2022-06-16 00:19:14 [INFO] : ========== Server init ==========
+2022-06-16 00:19:14 [INFO] : Port:10086 
+2022-06-16 00:19:14 [INFO] : LogSys level: 1 
+2022-06-16 00:19:14 [INFO] : ========== Load depository ==========
+2022-06-16 00:19:32 [INFO] : Conn[6](127.0.0.1:23691) in, userCount:1
+2022-06-16 00:19:40 [INFO] : Request Insert Key:a Value:(sring) 2022-06-16 00:19:40 [INFO] :  "!23131",2022-06-16 00:19:40 [INFO] :  "fawfafafa",2022-06-16 00:19:40 [INFO] :  "Fafafafa",2022-06-16 00:19:40 [INFO] : 
+2022-06-16 00:51:53 [INFO] : ========== Server init ==========
+2022-06-16 00:51:53 [INFO] : Port:10086 
+2022-06-16 00:51:53 [INFO] : LogSys level: 1 
+2022-06-16 00:51:53 [INFO] : ========== Load depository ==========
+2022-06-16 00:52:25 [INFO] : Conn[6](127.0.0.1:64146) in, userCount:1
+2022-06-16 00:52:27 [INFO] : Request GET Key: a, but NIL
+2022-06-16 00:55:10 [INFO] : ========== Server init ==========
+2022-06-16 00:55:10 [INFO] : Port:10086 
+2022-06-16 00:55:10 [INFO] : LogSys level: 1 
+2022-06-16 00:55:10 [INFO] : ========== Load depository ==========
+2022-06-16 00:55:16 [INFO] : Conn[6](127.0.0.1:41619) in, userCount:1
+2022-06-16 00:55:20 [INFO] : Request GET Key: b, but NIL
+2022-06-16 00:55:24 [INFO] : Request GET Key: c, but NIL
+2022-06-16 00:56:31 [INFO] : ========== Server init ==========
+2022-06-16 00:56:31 [INFO] : Port:10086 
+2022-06-16 00:56:31 [INFO] : LogSys level: 1 
+2022-06-16 00:56:31 [INFO] : ========== Load depository ==========
+2022-06-16 00:56:36 [INFO] : Conn[6](127.0.0.1:61587) in, userCount:1
+2022-06-16 00:58:05 [INFO] : ========== Server init ==========
+2022-06-16 00:58:05 [INFO] : Port:10086 
+2022-06-16 00:58:05 [INFO] : LogSys level: 1 
+2022-06-16 00:59:10 [INFO] : ========== Server init ==========
+2022-06-16 00:59:10 [INFO] : Port:10086 
+2022-06-16 00:59:10 [INFO] : LogSys level: 1 
+2022-06-16 00:59:10 [INFO] : ========== Load depository ==========
+2022-06-16 00:59:12 [INFO] : Conn[6](127.0.0.1:41108) in, userCount:1
+2022-06-16 00:59:16 [INFO] : Conn[6](127.0.0.1:41108) quit, UserCount:0
+2022-06-16 00:59:38 [INFO] : Conn[6](127.0.0.1:47252) in, userCount:1
+2022-06-16 01:00:14 [INFO] : ========== Server init ==========
+2022-06-16 01:00:14 [INFO] : Port:10086 
+2022-06-16 01:00:14 [INFO] : LogSys level: 1 
+2022-06-16 01:00:14 [INFO] : ========== Load depository ==========
+2022-06-16 01:00:16 [INFO] : Conn[6](127.0.0.1:59028) in, userCount:1
+2022-06-16 01:00:46 [INFO] : ========== Server init ==========
+2022-06-16 01:00:46 [INFO] : Port:10086 
+2022-06-16 01:00:46 [INFO] : LogSys level: 1 
+2022-06-16 01:00:46 [INFO] : ========== Load depository ==========
+2022-06-16 01:00:48 [INFO] : Conn[6](127.0.0.1:1173) in, userCount:1
+2022-06-16 01:01:37 [INFO] : ========== Server init ==========
+2022-06-16 01:01:37 [INFO] : Port:10086 
+2022-06-16 01:01:37 [INFO] : LogSys level: 1 
+2022-06-16 01:01:37 [INFO] : ========== Load depository ==========
+2022-06-16 01:01:39 [INFO] : Conn[6](127.0.0.1:14485) in, userCount:1
+2022-06-16 01:01:43 [INFO] : Request GET Key: a, but NIL
+2022-06-16 01:01:46 [INFO] : Request Insert Key:a Value:(double) 1 
+2022-06-16 01:02:06 [INFO] : ========== Server init ==========
+2022-06-16 01:02:06 [INFO] : Port:10086 
+2022-06-16 01:02:06 [INFO] : LogSys level: 1 
+2022-06-16 01:02:06 [INFO] : ========== Load depository ==========
+2022-06-16 01:02:08 [INFO] : Conn[6](127.0.0.1:23189) in, userCount:1
+2022-06-16 01:03:55 [INFO] : ========== Server init ==========
+2022-06-16 01:03:55 [INFO] : Port:10086 
+2022-06-16 01:03:55 [INFO] : LogSys level: 1 
+2022-06-16 01:03:55 [INFO] : ========== Load depository ==========
+2022-06-16 01:03:57 [INFO] : Conn[6](127.0.0.1:53397) in, userCount:1
+2022-06-16 01:04:23 [INFO] : ========== Server init ==========
+2022-06-16 01:04:23 [INFO] : Port:10086 
+2022-06-16 01:04:23 [INFO] : LogSys level: 1 
+2022-06-16 01:04:23 [INFO] : ========== Load depository ==========
+2022-06-16 01:04:25 [INFO] : Conn[6](127.0.0.1:62101) in, userCount:1
+2022-06-16 01:05:28 [INFO] : ========== Server init ==========
+2022-06-16 01:05:28 [INFO] : Port:10086 
+2022-06-16 01:05:28 [INFO] : LogSys level: 1 
+2022-06-16 01:05:28 [INFO] : ========== Load depository ==========
+2022-06-16 01:05:43 [INFO] : Conn[6](127.0.0.1:15510) in, userCount:1
+2022-06-16 01:07:23 [INFO] : ========== Server init ==========
+2022-06-16 01:07:23 [INFO] : Port:10086 
+2022-06-16 01:07:23 [INFO] : LogSys level: 1 
+2022-06-16 01:07:23 [INFO] : ========== Load depository ==========
+2022-06-16 01:07:26 [INFO] : Conn[6](127.0.0.1:42134) in, userCount:1
+2022-06-16 01:07:28 [INFO] : Request GET Key: a, Value type:double
+2022-06-16 01:09:14 [INFO] : ========== Server init ==========
+2022-06-16 01:09:14 [INFO] : Port:10086 
+2022-06-16 01:09:14 [INFO] : LogSys level: 1 
+2022-06-16 01:09:14 [INFO] : ========== Load depository ==========
+2022-06-16 01:09:17 [INFO] : Conn[6](127.0.0.1:6807) in, userCount:1
+2022-06-16 01:09:19 [INFO] : Request GET Key: b, Value type:string
+2022-06-16 01:10:12 [INFO] : ========== Server init ==========
+2022-06-16 01:10:12 [INFO] : Port:10086 
+2022-06-16 01:10:12 [INFO] : LogSys level: 1 
+2022-06-16 01:10:12 [INFO] : ========== Load depository ==========
+2022-06-16 01:10:15 [INFO] : Conn[6](127.0.0.1:22167) in, userCount:1
+2022-06-16 01:10:18 [INFO] : Request GET Key: c, Value type:string list
+2022-06-16 01:10:27 [INFO] : Request GET Key: d, Value type:double list
+2022-06-16 01:10:33 [INFO] : Request Insert Key:c Value:(double) 1 
+2022-06-16 01:10:36 [INFO] : Request GET Key: c, Value type:double
+2022-06-16 01:12:12 [INFO] : client[6]:timeout
+2022-06-16 01:13:24 [INFO] : ========== Server init ==========
+2022-06-16 01:13:24 [INFO] : Port:10086 
+2022-06-16 01:13:24 [INFO] : LogSys level: 1 
+2022-06-16 01:13:24 [INFO] : ========== Load depository ==========
+2022-06-16 01:13:24 [INFO] : Load Key:a Value(double):1
+2022-06-16 01:13:24 [INFO] : Load Key:b Value(string):"zhang-yuqin"
+2022-06-16 01:13:24 [INFO] : Load Key:c Value(double):1
+2022-06-16 01:13:24 [INFO] : Load Key:d Value(double):1 2 3 
+2022-06-16 01:13:26 [INFO] : Conn[6](127.0.0.1:10392) in, userCount:1
+2022-06-16 01:13:28 [INFO] : Request GET Key: a, Value type:double
+2022-06-16 01:13:30 [INFO] : Request GET Key: b, Value type:string
+2022-06-16 01:13:32 [INFO] : Request GET Key: c, Value type:double
+2022-06-16 01:13:34 [INFO] : Request GET Key: d, Value type:double list
+2022-06-16 01:13:47 [INFO] : Request Insert Key:c Value:(sring) 2022-06-16 01:13:47 [INFO] :  "xiaozhang",2022-06-16 01:13:47 [INFO] :  "xiaoliu",2022-06-16 01:13:47 [INFO] : 
+2022-06-16 01:14:17 [INFO] : Request GET Key: d, Value type:double list
+2022-06-16 01:14:19 [INFO] : Request GET Key: f, but NIL

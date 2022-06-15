@@ -7,46 +7,57 @@
 #include <cstring>
 #include <mutex>
 #include <fstream>
+#include <vector>
+#include "database/toydb.h"
 
-#define SAVE_PATH   "log/data.log"
+#define SAVE_PATH   "./depository/lastet.data"
 
-namespace mylist{
+namespace toydb{
 
+// bool Type_inference(std::string str){
+//     if(str.length() >= 2 && str[0] == '\"' && str[str.length()-1] == '\"')
+//         return true;
+//     return false;
+// }
+
+// bool Type_inference(char* chs){
+//     return Type_inference(std::string(chs));
+// }
 /*=============================class Node================================*/
-template<class K, class V>
+template<class K>
 class Node{
 public:
     Node() ;
-    Node(K k, V v, int h){
+    Node(K k, ValueObject* v, int h){
         key_ = k;
         value_ = v;
         height = h; 
 
-        forward = new Node<K, V>*[height + 1];
+        forward = new Node<K>*[height + 1];
     
-        memset(forward, 0, sizeof(Node<K, V>*) * (height + 1));
+        memset(forward, 0, sizeof(Node<K>*) * (height + 1));
     }
     ~Node() {delete []forward;}
 
     K get_key() const {return key_;}
-    V get_value() const {return value_;}
+    ValueObject* get_value() const {return value_;}
 
-    void set_value(V v) {value_=v;}
+    void set_value(ValueObject* v) {value_=v;}
 
-    Node<K, V> **forward;
+    Node<K> **forward;
 
 public:
     int height;
 
 private:
     K key_;
-    V value_;
+    ValueObject* value_;
 };
 
 
 /*=============================class SkipList================================*/
 
-template <typename K, typename V> 
+template <class K> 
 class SkipList {
 
 public: 
@@ -55,8 +66,8 @@ public:
         skip_list_height_ = 0;
         element_count_ = 0;
         K k;
-        V v;
-        header_ = new Node<K, V>(k, v, max_height);
+        ValueObject* v;
+        header_ = new Node<K>(k, v, max_height);
     }
     ~SkipList(){
         if (file_writer_.is_open()) {file_writer_.close();}
@@ -72,54 +83,119 @@ public:
         return h;
     }
 
-    bool insert_element(K, V);
+    bool insert_element(K, ValueObject*);
 
     void delete_element(K);
 
     bool has_element(K);
 
-    V get_element(K);
+    ValueObject* get_element(K);
 
     void display_list();
 
     void dump_file(){
         file_writer_.open(SAVE_PATH);
-        Node<K, V>* head = header_->forward[0]; 
+        Node<K>* node = header_->forward[0]; 
 
-        while (head != nullptr) {
-        file_writer_ << head->get_key() << ":" << head->get_value() << "\n";
-        head = head->forward[0];
+        while (node != nullptr) {
+            file_writer_ << node->get_key() << ":";
+            if(node->get_value()->value_type == DOUBLE){
+                file_writer_ << node->get_value()->value.double_type;
+            }
+            else if(node->get_value()->value_type == STRING){
+                file_writer_ << *static_cast<std::string*>(node->get_value()->value.ptr_type);
+            }
+            else if(node->get_value()->value_type == DOUBLE_LIST){
+                std::vector<double> vec = *static_cast<std::vector<double>*>(node->get_value()->value.ptr_type);
+                for(int i = 0; i < vec.size(); i++){
+                    file_writer_ << vec[i]<<" ";
+                }
+            }
+            else if(node->get_value()->value_type == STRING_LIST){
+                std::vector<std::string> vec = *static_cast<std::vector<std::string>*>(node->get_value()->value.ptr_type);
+                 for(int i = 0; i < vec.size(); i++){
+                    file_writer_ << vec[i]<<" ";
+                }
+            }
+            file_writer_ << "\n";
+            node = node->forward[0];
         }
         file_writer_.flush();
         file_writer_.close();
     }
-    // void load_file(){
-    //     file_reader_.open(SAVE_PATH);
-    //     std::string line;
-    //     std::string* key = new std::string();
-    //     std::string* value = new std::string();
+    void load_file(){
+        file_reader_.open(SAVE_PATH);
+        std::string line;
+        std::string key;
+        std::string value;
 
-    //     while (getline(file_reader_, line)) {
-    //         get_key_value_from_string_(line, key, value);
-    //         if (key->empty() || value->empty()) {
-    //             continue;
-    //         }
-    //         insert_element(*key, *value);
-    //         std::cout << "key:" << *key << "value:" << *value << std::endl;
-    //     }
-    //     file_reader_.close();
-    // }
+        while (getline(file_reader_, line)) {
+            get_key_value_from_string_(line, key, value);
+            
+            ValueObject* object = new ValueObject();
+            
+            char buf[1024];
+            bzero(&buf, sizeof(buf));
+            strcpy(buf,value.c_str());
+            char *buf_split[10], *p;
+            p = NULL;
+
+            p = strtok(buf, " ");
+            int cnt = 0;
+            while(p){
+                buf_split[cnt] = p;
+                ++cnt;
+                p = strtok(NULL, " ");   
+            }
+
+            bool is_string = false;
+            if(std::string(buf_split[0]).length() >= 2 && std::string(buf_split[0])[0] == '\"' \
+                        && std::string(buf_split[0])[std::string(buf_split[0]).length()-1] == '\"'){
+                is_string = true;
+            }
+
+            if(!is_string && cnt == 1){
+                object->value_type = DOUBLE;
+                object->value.double_type = stod(std::string(buf_split[0]));
+                LOG(INFO,"Load Key:%s Value(double):%s\n",key.c_str(), value.c_str());
+            }
+            else if(is_string && cnt == 1){
+                object->value_type = STRING;
+                std::string* str = new std::string(buf_split[0]);
+                object->value.ptr_type = static_cast<void*>(str);
+                LOG(INFO,"Load Key:%s Value(string):%s\n",key.c_str(), value.c_str());
+            }else if(!is_string && cnt > 1){
+                object->value_type = DOUBLE_LIST;
+                std::vector<double>* vec = new std::vector<double>(cnt);
+                for(int i = 0; i < cnt; i++){
+                    (*vec)[i] = stod(std::string(buf_split[i]));
+                }
+                object->value.ptr_type = static_cast<void*>(vec);
+                LOG(INFO,"Load Key:%s Value(double list):%s\n",key.c_str(), value.c_str());
+            }else if(is_string && cnt > 1){
+                object->value_type = STRING_LIST;
+                std::vector<std::string>* vec = new std::vector<std::string>(cnt);
+                for(int i = 0; i < cnt; i++){
+                    (*vec)[i] = std::string(buf_split[i]);
+                }
+                object->value.ptr_type = static_cast<void*>(vec);
+                LOG(INFO,"Load Key:%s Value(string list):%s\n",key.c_str(), value.c_str());
+            }
+            insert_element(key, object);
+        }
+        file_reader_.close();
+    }
 
     size_t size(){
         return element_count_;
     }
 
 private:
-    void get_key_value_from_string_(const std::string& str, std::string* key, std::string* value);
+    void get_key_value_from_string_(const std::string& str, std::string& key, std::string& value);
 //     bool is_valid_string_(const std::string& str);
 
-    Node<K, V>* create_node_(K k, V v, int h){
-        Node<K, V> *n = new Node<K, V>(k, v, h);
+    Node<K>* create_node_(K k, ValueObject* v, int h){
+        Node<K> *n = new Node<K>(k, v, h);
         return n;
     }
 private:    
@@ -133,7 +209,7 @@ private:
     int skip_list_height_;
 
     // pointer to header node 
-    Node<K, V>* header_;
+    Node<K>* header_;
 
     // file operator
     std::ofstream file_writer_;
@@ -144,14 +220,14 @@ private:
 };
 
 
-template<typename K, typename V>
-bool SkipList<K, V>::insert_element(const K key, const V value) {
+template<class K>
+bool SkipList<K>::insert_element(const K key, ValueObject* value) {
     
     std::lock_guard<std::mutex> locker(mtx_);
 
-    Node<K, V> *current_node = header_;
-    Node<K, V> *update_nodes[max_height_ + 1];
-    memset(update_nodes, 0, sizeof(Node<K, V>*)*(max_height_ + 1));  
+    Node<K> *current_node = header_;
+    Node<K> *update_nodes[max_height_ + 1];
+    memset(update_nodes, 0, sizeof(Node<K>*)*(max_height_ + 1));  
 
     for(int i = skip_list_height_; i >= 0; i--) {
         while(current_node->forward[i] != nullptr && current_node->forward[i]->get_key() < key) {
@@ -164,9 +240,6 @@ bool SkipList<K, V>::insert_element(const K key, const V value) {
     current_node = current_node->forward[0];
     
     if (current_node != nullptr && current_node->get_key() == key) {
-        // std::cout << "key: " << key << ", exists" << std::endl;
-        // delete_element(key);
-        // return insert_element(key, value);
         current_node->set_value(value);
         return true;
     }
@@ -180,23 +253,22 @@ bool SkipList<K, V>::insert_element(const K key, const V value) {
         skip_list_height_ = random_height;
     }
 
-    Node<K, V>* inserted_node = create_node_(key, value, random_height);
+    Node<K>* inserted_node = create_node_(key, value, random_height);
 
     for (int i = 0; i <= random_height; i++) {
         inserted_node->forward[i] = update_nodes[i]->forward[i];
         update_nodes[i]->forward[i] = inserted_node;
     }
-
     element_count_ ++;
     return true;
 }
 
-template<typename K, typename V> 
-void SkipList<K, V>::delete_element(K key) {
+template<class K> 
+void SkipList<K>::delete_element(K key) {
     std::lock_guard<std::mutex> locker(mtx_);
 
-    Node<K, V> *current_node = header_;
-    Node<K, V> *update_nodes[max_height_ + 1];
+    Node<K> *current_node = header_;
+    Node<K> *update_nodes[max_height_ + 1];
 
     for(int i = skip_list_height_; i >=0; i--){
          while(current_node->forward[i] != nullptr && current_node->forward[i]->get_key() < key) {
@@ -227,10 +299,10 @@ void SkipList<K, V>::delete_element(K key) {
     return;
 }
 
-template<typename K, typename V> 
-bool SkipList<K, V>::has_element(K key) {
+template<class K> 
+bool SkipList<K>::has_element(K key) {
     //no need a lock
-    Node<K, V> *current_node = header_;
+    Node<K> *current_node = header_;
 
     for(int i = skip_list_height_; i >=0; i--){
          while(current_node->forward[i] != nullptr && current_node->forward[i]->get_key() < key) {
@@ -247,9 +319,9 @@ bool SkipList<K, V>::has_element(K key) {
     }
 }
 
-template<typename K, typename V> 
-V SkipList<K, V>::get_element(K key) {
-    Node<K, V> *current_node = header_;
+template<class K> 
+ValueObject* SkipList<K>::get_element(K key) {
+    Node<K> *current_node = header_;
 
     for(int i = skip_list_height_; i >=0; i--){
          while(current_node->forward[i] != nullptr && current_node->forward[i]->get_key() < key) {
@@ -262,15 +334,15 @@ V SkipList<K, V>::get_element(K key) {
         return current_node->get_value();
     }else{
         // std::cout << "Can't find key "<< key << std::endl;
-        return V(0);
+        return nullptr;
     }
 }
 
-template<typename K, typename V>
-void SkipList<K, V>::get_key_value_from_string_(const std::string& str, std::string* key, std::string* value) {
+template<class K>
+void SkipList<K>::get_key_value_from_string_(const std::string& str, std::string& key, std::string& value) {
 
-    *key = str.substr(0, str.find(":"));
-    *value = str.substr(str.find(":")+1, str.length());
+    key = str.substr(0, str.find(":"));
+    value = str.substr(str.find(":")+1, str.length());
 }
 
 

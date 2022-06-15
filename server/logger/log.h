@@ -72,7 +72,7 @@ private:
     do {\
         printf(format, ##__VA_ARGS__);\
         LOG_BASE(level, format, ##__VA_ARGS__);\
-    }while(0);
+    }while(0);    
 
 #define DEBUG           0
 #define INFO            1
