@@ -30,6 +30,7 @@ toyDB-+-server-+-BUILD
   * reactor + acceptor + handler
 * C++11风格的线程池，使用条件变量实现阻塞队列，利用std::function和std::bind将任务函数绑定添加到线程池
 * 利用SIGALRM和堆，关闭长时间不活跃的连接
+* 使用protobuf作为序列化\反序列化工具，在server和client之间传递指令
 * 添加了一些基于gtest的单元测试
 * 基于skiplist和std::unordered_map实现了简易的K-V存储系统，后期可以考虑增加多种存储结构
   * key为string
@@ -61,7 +62,11 @@ toyDB-+-server-+-BUILD
   * 若没有找到key, 会返回`NIL`, 插入成功返回`OK`
   * 若以列表作为value，列表中的全部值应为同一种类型，如：全为double或全为string
   * 若插入字符作为value，应被双引号`""`包围，否则暂认为是double
-* 使用protobuf作为序列化\反序列化工具，在server和client之间传递指令
+* 开放了接口用于向磁盘持久化数据和从磁盘读取数据
+  * 启动server时可设置是否从磁盘读取数据
+  * 定时向磁盘写入数据
+  * 为后期的多机数据库主从复制做准备(主服务器启动时向从服务器发送自己的数据文件)
+
 
 ![1655221087(1)](https://user-images.githubusercontent.com/75946871/173618579-683e5389-ab6d-4ebd-98c1-94987b0b5dd6.png)
 
