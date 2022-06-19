@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jun 19 10:28:24 2022
+# Make data base, printed on Sun Jun 19 23:58:48 2022
 
 # Variables
 
@@ -41,9 +41,9 @@ CURDIR := /home/ubuntu/myweb
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_translationsConfigFile":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/tcf.json","_cacheRoot":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_resolvedLanguagePackCoreLocation":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_translationsConfigFile":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/tcf.json","_cacheRoot":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_resolvedLanguagePackCoreLocation":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/home/ubuntu/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /home/ubuntu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/node
+_ = /home/ubuntu/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
 # makefile
 MAKEFILE_LIST := 
 # 'override' directive
@@ -59,15 +59,19 @@ VSCODE_CWD = /home/ubuntu
 # environment
 AM_HOME = /home/ubuntu/ics2021/abstract-machine
 # environment
-SSH_CONNECTION = 153.3.60.243 47972 10.0.16.12 22
+GOPROXY = https://proxy.golang.org,direct
 # environment
-PATH = /home/ubuntu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/bin:/snap/bin
+SSH_CONNECTION = 153.3.60.230 14840 10.0.16.12 22
+# environment
+PATH = /home/ubuntu/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/bin:/snap/bin
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
+GOPATH = /home/ubuntu/go
+# environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-70d1fe01-9d23-485c-8b0e-bbbf16394e8e.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-980964f4-2b27-4b0f-9a60-03fe37bd2c2c.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # automatic
@@ -105,7 +109,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = 7264
+XDG_SESSION_ID = 8441
 # environment
 USER = ubuntu
 # makefile
@@ -114,6 +118,8 @@ USER = ubuntu
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := make
+# environment
+OLDPWD = /home/ubuntu/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630
 # default
 .VARIABLES := 
 # automatic
@@ -125,11 +131,11 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 153.3.60.243 47972 22
+SSH_CLIENT = 153.3.60.230 14840 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-BROWSER = /home/ubuntu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/helpers/browser.sh
+BROWSER = /home/ubuntu/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/helpers/browser.sh
 # environment
 VSCODE_HANDLES_SIGPIPE = true
 # default
@@ -159,7 +165,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 MOTD_SHOWN = pam
 # variable set hash-table stats:
-# Load=73/1024=7%, Rehash=0, Collisions=9/95=9%
+# Load=76/1024=7%, Rehash=0, Collisions=9/98=9%
 
 # Pattern-specific Variable Values
 
@@ -225,6 +231,6 @@ GNUmakefile:
 # strcache performance: lookups = 31 / hit rate = 9%
 # hash-table stats:
 # Load=28/8192=0%, Rehash=0, Collisions=1/31=3%
-# Finished Make data base on Sun Jun 19 10:28:24 2022
+# Finished Make data base on Sun Jun 19 23:58:48 2022
 
  

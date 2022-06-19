@@ -23,24 +23,24 @@
 #include "server/connect/conn.h"
 #include "server/threadpool/threadpool.h"
 #include "server/timer/heaptimer.h"
-#include "protoc/text_msg.pb.h"
-#include "protoc/database_msg.pb.h"
+#include "proto/text_msg.pb.h"
+#include "proto/database_msg.pb.h"
 #include "database/skiplist.h"
 #include "database/sortlist.h"
 #include "database/toydb.h"
 
 
 
-class WebServer{
+class Server{
 public:
     /*端口, epoll激发模式*/
-    explicit WebServer(int port, int trigMode, int logLevel, const char* logDir, const bool loadDepository);
-    ~WebServer();
+    explicit Server(int port, int trigMode, int logLevel, const char* logDir, const bool loadDepository);
+    ~Server();
 
     void Run();
 
     static void SigHandler(int sig);
-    friend void doTimeout(int fd, WebServer* webserver);
+    friend void doTimeout(int fd, Server* webserver);
 
 private:
     int port_;      //私有字段一般以 `_` 结尾

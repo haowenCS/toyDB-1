@@ -4,11 +4,11 @@
 const int TIMEOUT = 60;
 const int BUFSIZE = 1024;
 
-int WebServer::pipefd_[2];
-bool WebServer::isTimeOut_ = false;
+int Server::pipefd_[2];
+bool Server::isTimeOut_ = false;
 
 
-WebServer::WebServer(int port, int trigMode, int logLevel, const char* logDir, bool loadDepository) : port_(port), isClose_(false){
+Server::Server(int port, int trigMode, int logLevel, const char* logDir, bool loadDepository) : port_(port), isClose_(false){
     listenEvent_ = EPOLLRDHUP | EPOLLIN; //断开连接 | 接受连接
     InitEventMode_(trigMode);
     InitSocket_();
@@ -31,14 +31,14 @@ WebServer::WebServer(int port, int trigMode, int logLevel, const char* logDir, b
     }
 }
 
-WebServer::~WebServer(){
+Server::~Server(){
     LOG(INFO, "========== Server offline ==========\n");
     isTimeOut_ = true;
     isClose_ = true;
     close(listenFd_);
 }
 
-void WebServer::InitEventMode_(int trigMode){
+void Server::InitEventMode_(int trigMode){
 		epoller_ = std::unique_ptr<Epoller>(new Epoller);    
 		switch (trigMode){
     case 0:
@@ -53,7 +53,7 @@ void WebServer::InitEventMode_(int trigMode){
 }
 
 
-void WebServer::InitSocket_(){
+void Server::InitSocket_(){
     int ret;
     struct sockaddr_in addr;
     addr.sin_family = AF_INET;
@@ -75,7 +75,7 @@ void WebServer::InitSocket_(){
     SetNonblock(listenFd_);
 }
 
-int WebServer::SetNonblock(int fd){
+int Server::SetNonblock(int fd){
     assert(fd >= 0);
     int oldOpt = fcntl(fd, F_GETFD, 0);
     int newOpt = fcntl(fd, F_SETFL, oldOpt |  O_NONBLOCK);
@@ -83,7 +83,7 @@ int WebServer::SetNonblock(int fd){
 }
 
 
-void WebServer::Run(){
+void Server::Run(){
     Addsig_(SIGALRM);
     Addsig_(SIGTERM);
     alarm(TIMEOUT);
@@ -134,16 +134,16 @@ void WebServer::Run(){
     }
 }
 
-void WebServer::CloseConn_(Conn* client){
+void Server::CloseConn_(Conn* client){
     epoller_->DelFd(client->GetFd());
     client->Close();
 }
 
-void WebServer::DealRead_(Conn* client){
-    threadpool_->AddTask(std::bind(&WebServer::DoRead_, this, client));
+void Server::DealRead_(Conn* client){
+    threadpool_->AddTask(std::bind(&Server::DoRead_, this, client));
 }
 
-void WebServer::deal_put_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &response_msg, std::string &sender){
+void Server::deal_put_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &response_msg, std::string &sender){
     msg::InsertElementRequest request;
     msg::InsertElementResponse response;
     toydb::ValueObject* object;
@@ -203,7 +203,7 @@ void WebServer::deal_put_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &r
     response_msg.SerializeToString(&sender);
 }
 
-void WebServer::deal_get_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &response_msg, std::string &sender){
+void Server::deal_get_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &response_msg, std::string &sender){
     msg::GetElementRequest request;
     msg::GetElementResponse response;
 
@@ -251,7 +251,7 @@ void WebServer::deal_get_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &r
 }
 
 
-void WebServer::deal_del_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &response_msg, std::string &sender){
+void Server::deal_del_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &response_msg, std::string &sender){
     msg::DeleteElementRequest request;
     msg::DeleteElementResponse response;
 
@@ -275,7 +275,7 @@ void WebServer::deal_del_msg_(msg::DatabaseMsg &request_msg, msg::DatabaseMsg &r
     response_msg.SerializeToString(&sender);
 }
 
-void WebServer::DoRead_(Conn* client){
+void Server::DoRead_(Conn* client){
     char buf[BUFSIZE];
     while(true){    //由于使用非阻塞IO，需要不断读取，直到全部读取完毕
         timer_->adjust(client->GetFd(), TIMEOUT*1000);
@@ -316,24 +316,24 @@ void WebServer::DoRead_(Conn* client){
 }
 
 
-void WebServer::DealWrite_(Conn* client){
+void Server::DealWrite_(Conn* client){
     
 }
 
 
-void doTimeout(int fd, WebServer* webserver){
+void doTimeout(int fd, Server* webserver){
     LOG(INFO ,"client[%d]:timeout\n", fd);
     webserver->CloseConn_(&(webserver->clients_[fd]));
 }
 
-void WebServer::TimerHandler_(){
+void Server::TimerHandler_(){
     timer_->tick();
     LOG(DEBUG ,"tick\n");
     alarm(TIMEOUT);
 }
 
 
-void WebServer::SigHandler(int sig){
+void Server::SigHandler(int sig){
     int msg = sig;
     isTimeOut_ = true;
     // if(msg == SIGALRM)
@@ -343,14 +343,14 @@ void WebServer::SigHandler(int sig){
 }
 
 void SigHandler(int sig){
-    WebServer::SigHandler(sig);
+    Server::SigHandler(sig);
 }
 
-void WebServer::Addsig_(int sig){
+void Server::Addsig_(int sig){
     signal(sig, SigHandler);
 }
 
-void WebServer::DealConnect_(){
+void Server::DealConnect_(){
     struct sockaddr_in addr;
     socklen_t len = sizeof(addr);
     int clientFd = accept(listenFd_, (struct sockaddr *)&addr, &len);
@@ -365,7 +365,7 @@ void WebServer::DealConnect_(){
     timer_->add(clientFd, TIMEOUT*1000, std::bind(doTimeout, clientFd, this));
 }
 
-// void WebServer::DealSig_(){
+// void Server::DealSig_(){
 //     int sig;
 //     char signals[1024];
 //     int ret = read(pipefd_[0], signals, sizeof(signals));

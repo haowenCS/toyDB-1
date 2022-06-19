@@ -9,8 +9,8 @@
 #include <stdexcept>
 
 
-#include "protoc/database_msg.pb.h"
-#include "protoc/text_msg.pb.h"
+#include "proto/database_msg.pb.h"
+#include "proto/text_msg.pb.h"
 #include "database/toydb.h"
 
 #define BUFSIZE     1024

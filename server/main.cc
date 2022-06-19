@@ -6,6 +6,6 @@ const char* logDir = "log";
 const bool loadDepository = true;
 
 int main(){
-    WebServer server(PORT, 1, logLevel, logDir, loadDepository);
+    Server server(PORT, 1, logLevel, logDir, loadDepository);
     server.Run();   
 }

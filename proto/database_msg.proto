@@ -1,6 +1,8 @@
 syntax = "proto3"; 
 
 package msg; 
+option go_package = "github.com/zhangyuqin1998/toydb/proto/database_msg";
+
 
 enum MSG_TYPE{
     INSERT_ELEMENT_REQUEST = 0;

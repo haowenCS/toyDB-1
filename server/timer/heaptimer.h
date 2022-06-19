@@ -16,7 +16,7 @@ typedef std::chrono::high_resolution_clock Clock;
 typedef std::chrono::milliseconds MS;
 typedef Clock::time_point TimeStamp;
 
-class WebServer;
+class Server;
 
 struct TimerNode {
     int id;
@@ -31,7 +31,7 @@ struct TimerNode {
 class HeapTimer {
 public:
 
-    friend class WebServer;
+    friend class Server;
     HeapTimer() { heap_.reserve(64); }
 
     ~HeapTimer() { clear(); }

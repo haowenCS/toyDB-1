@@ -7,6 +7,7 @@ import (
 	"bufio"
 	"strings"
 	"strconv"
+	msg "proto/database_msg"
 )
 
 const SERV_IP  = "127.0.0.1"
@@ -26,6 +27,11 @@ func Is_string_type(command string) bool {
 }
 
 func deal_set(commands []string) (){
+	dataMsg := &msg.DatabaseMsg{MsgType: msg.MSG_TYPE_INSERT_ELEMENT_REQUEST}
+	requestMsg := &msg.InsertElementRequest{}
+	requestMsg.Key = commands[0]
+	dataMsg.InsertElementRequest = requestMsg
+
 	flag := Is_string_type(commands[2])
 	for i := 2; i < len(commands); i++{
 		if Is_string_type(commands[i]) != flag{
@@ -97,7 +103,6 @@ func main(){
 
 		commands := strings.Fields(input)
 		CommandParser(commands)
-
 	}
 
 	os.Exit(0)
