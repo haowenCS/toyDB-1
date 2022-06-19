@@ -1,2 +1,6 @@
 build --incompatible_blacklisted_protos_requires_proto_info=false
 build --cxxopt='-std=c++14'
+
+test --action_env=GOPROXY=https://goproxy.io
+build --action_env=GOPROXY=https://goproxy.io
+run --action_env=GOPROXY=https://goproxy.io

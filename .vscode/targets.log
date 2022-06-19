@@ -2,68 +2,37 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target 'all'.  Stop.
 
 # GNU Make 4.2.1
- 
 # Built for x86_64-pc-linux-gnu
- 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
- 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
- 
 # This is free software: you are free to change and redistribute it.
- 
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
- 
-# Make data base, printed on Wed Jun 15 23:12:10 2022
- 
+# Make data base, printed on Sun Jun 19 10:28:24 2022
 
 # Variables
- 
 
- 
 # automatic
- 
 <D = $(patsubst %/,%,$(dir $<))
- 
 # automatic
- 
 ?F = $(notdir $?)
- 
 # default
- 
 .SHELLFLAGS := -c
- 
 # environment
- 
 XDG_SESSION_CLASS = user
- 
 # environment
- 
 VSCODE_AGENT_FOLDER = /home/ubuntu/.vscode-server
- 
 # environment
- 
 XDG_SESSION_TYPE = tty
- 
 # environment
- 
 VSCODE_LOG_NATIVE = false
- 
 # automatic
- 
 ?D = $(patsubst %/,%,$(dir $?))
- 
 # automatic
- 
 @D = $(patsubst %/,%,$(dir $@))
- 
 # environment
- 
 NEMU_HOME = /home/ubuntu/ics2021/nemu
- 
 # automatic
- 
 @F = $(notdir $@)
 # default
 MAKE_VERSION := 4.2.1
@@ -90,7 +59,7 @@ VSCODE_CWD = /home/ubuntu
 # environment
 AM_HOME = /home/ubuntu/ics2021/abstract-machine
 # environment
-SSH_CONNECTION = 153.3.60.168 53283 10.0.16.12 22
+SSH_CONNECTION = 153.3.60.243 47972 10.0.16.12 22
 # environment
 PATH = /home/ubuntu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/bin:/snap/bin
 # environment
@@ -98,7 +67,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-dfb4bd60-e2e2-47b3-a3cb-acfccf9d217d.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-70d1fe01-9d23-485c-8b0e-bbbf16394e8e.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # automatic
@@ -136,7 +105,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = 2
+XDG_SESSION_ID = 7264
 # environment
 USER = ubuntu
 # makefile
@@ -156,7 +125,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 153.3.60.168 53283 22
+SSH_CLIENT = 153.3.60.243 47972 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -198,9 +167,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64514, inode 650995): 19 files, no impossibilities.
+# . (device 64514, inode 650995): 20 files, no impossibilities.
 
-# 19 files, no impossibilities in 1 directories.
+# 20 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -250,12 +219,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 27 / storage = 240 B / avg = 8 B
-# current buf: size = 8162 B / used = 240 B / count = 27 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 28 / storage = 251 B / avg = 8 B
+# current buf: size = 8162 B / used = 251 B / count = 28 / avg = 8 B
 
-# strcache performance: lookups = 30 / hit rate = 10%
+# strcache performance: lookups = 31 / hit rate = 9%
 # hash-table stats:
-# Load=27/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Wed Jun 15 23:12:10 2022
+# Load=28/8192=0%, Rehash=0, Collisions=1/31=3%
+# Finished Make data base on Sun Jun 19 10:28:24 2022
 
  

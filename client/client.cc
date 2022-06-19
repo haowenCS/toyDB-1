@@ -15,6 +15,7 @@
 
 #define BUFSIZE     1024
 #define VERSION     "v0.0.1"
+#define SERV_IP     "127.0.0.1"
 
 static char command_cache[BUFSIZE];         //暂时没用到
 static bool has_command_cache = false;      //暂时没用到
@@ -147,7 +148,7 @@ int main(int argc, char** argv) {
     struct sockaddr_in serv_addr;
     bzero(&serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    serv_addr.sin_addr.s_addr = inet_addr(SERV_IP);
     serv_addr.sin_port = htons(atoi(argv[1]));
 
     connect(sockfd, (sockaddr*)&serv_addr, sizeof(serv_addr)) == -1, "socket connect error";
@@ -155,7 +156,7 @@ int main(int argc, char** argv) {
 
     printf(" _______          _____  ____\n ");  
     printf("|__   __|        |  __ \\|  _ \\                     author : Zhang Yu-qin\n ");
-    printf("   | | ___  _   _| |  | | |_) |                    version: %s\n", VERSION);
+    printf("   | | ___  _   _| |  | | |_) |                    version: %s -cc_client\n", VERSION);
     printf("    | |/ _ \\| | | | |  | |  _ <\n");
     printf("    | | (_) | |_| | |__| | |_) |\n");
     printf("    |_|\\___/ \\__, |_____/|____/\n");

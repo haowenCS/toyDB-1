@@ -1,8 +1,9 @@
 load("@rules_cc//cc:defs.bzl", "cc_proto_library") 
 load("@rules_proto//proto:defs.bzl", "proto_library") 
+#load("@io_bazel_rules_go//go:def.bzl", "go_binary")
 
 cc_binary(
-	name = "client",
+	name = "cc_client",
 	srcs = ["client.cc"],
 	deps = [ 
         "//protoc:text_msg_cc_pb", 
@@ -10,3 +11,8 @@ cc_binary(
 		"//database:toydb",
     ], 
 )
+
+# go_binary(
+#    name = "go_client",
+#    srcs = ["client.go"],
+#)

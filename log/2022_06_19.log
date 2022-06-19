@@ -1,0 +1,24 @@
+2022-06-19 11:28:45 [INFO] : ========== Server init ==========
+2022-06-19 11:28:45 [INFO] : Port:10086 
+2022-06-19 11:28:45 [INFO] : LogSys level: 1 
+2022-06-19 11:28:45 [INFO] : ========== Load depository ==========
+2022-06-19 11:28:45 [INFO] : Load Key:a Value(double):1
+2022-06-19 11:28:45 [INFO] : Load Key:b Value(string):"zhang-yuqin"
+2022-06-19 11:28:45 [INFO] : Load Key:c Value(string list):"xiaozhang" "xiaoliu" 
+2022-06-19 11:28:45 [INFO] : Load Key:d Value(double list):1 2 3 
+2022-06-19 11:28:48 [INFO] : Conn[6](127.0.0.1:6324) in, userCount:1
+2022-06-19 11:32:11 [INFO] : ========== Server init ==========
+2022-06-19 11:32:11 [INFO] : Port:10086 
+2022-06-19 11:32:11 [INFO] : LogSys level: 1 
+2022-06-19 11:32:11 [INFO] : ========== Load depository ==========
+2022-06-19 11:32:11 [INFO] : Load Key:a Value(double):1
+2022-06-19 11:32:11 [INFO] : Load Key:b Value(string):"zhang-yuqin"
+2022-06-19 11:32:11 [INFO] : Load Key:c Value(string list):"xiaozhang" "xiaoliu" 
+2022-06-19 11:32:11 [INFO] : Load Key:d Value(double list):1 2 3 
+2022-06-19 11:32:12 [INFO] : Conn[6](127.0.0.1:58036) in, userCount:1
+2022-06-19 11:32:40 [INFO] : Conn[7](127.0.0.1:64692) in, userCount:2
+2022-06-19 11:33:52 [INFO] : Conn[7](127.0.0.1:64692) quit, UserCount:1
+2022-06-19 11:33:55 [INFO] : Conn[6](127.0.0.1:58036) quit, UserCount:0
+2022-06-19 11:34:32 [INFO] : Conn[6](127.0.0.1:28853) in, userCount:1
+2022-06-19 11:35:11 [INFO] : Conn[6](127.0.0.1:28853) quit, UserCount:0
+2022-06-19 11:35:15 [INFO] : Conn[6](127.0.0.1:41653) in, userCount:1

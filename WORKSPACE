@@ -1,5 +1,4 @@
-workspace(name = "org_httpserver")
-
+workspace(name = "org_toydb")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
                                                                                                                                                                                                                                                       
@@ -39,3 +38,21 @@ http_archive(
   strip_prefix = "googletest-release-1.10.0",
   sha256 = "94c634d499558a76fa649edb13721dce6e98fb1e7018dfaeba3cd7a083945e91",
 )
+
+
+# load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# http_archive(
+#     name = "io_bazel_rules_go",
+#     sha256 = "685052b498b6ddfe562ca7a97736741d87916fe536623afb7da2824c0211c369",
+#     urls = [
+#         "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.33.0/rules_go-v0.33.0.zip",
+#         "https://github.com/bazelbuild/rules_go/releases/download/v0.33.0/rules_go-v0.33.0.zip",
+#     ],
+# )
+
+# load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+
+# go_rules_dependencies()
+
+# go_register_toolchains(version = "1.18.3")

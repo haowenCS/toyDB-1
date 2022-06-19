@@ -2,6 +2,9 @@ cc_library(
   name = "toydb",
   srcs = ["toydb.cc"],
   hdrs = ["toydb.h"],
+  deps = [
+    "//server:logger",
+  ],
 )
 
 
