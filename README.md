@@ -8,9 +8,10 @@
 代码结构：
 ```
 toyDB-+-server-+-BUILD
-      |        |-服务端组件
+      |        |-c++服务端组件
       |-client-+-BUILD
-      |        |-客户端组件
+      |        |-c++客户端
+      |        |-go客户端
       |-database-+-BUILD
       |          |-kv数据库组件
       |-protoc-+-BUILD
