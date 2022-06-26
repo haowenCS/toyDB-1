@@ -1,3 +1,5 @@
+这是一个单机环境的**kv缓存系统**，可扩展至多机
+
 为何使用**bazel**？快速构建、支持构建多种语言、便于扩展、结构清晰
 
 为何使用**protobuf**？性能优秀、支持多种编程语言、简洁易懂
@@ -31,10 +33,11 @@ toyDB-+-server-+-BUILD
 * 利用SIGALRM和堆，关闭长时间不活跃的连接
 * 使用protobuf作为序列化\反序列化工具，在server和client之间传递指
   * 实现了cc客户端和go客户端
+* 基于LRU的缓存置换策略
 * 添加了一些基于gtest的单元测试
-* 基于skiplist和std::unordered_map实现了简易的K-V存储系统，后期可以考虑增加多种存储结构
+* 基于std::unordered_map实现了简易的K-V存储系统，后期考虑增加多种存储结构
   * key为string
-  * 使用ValueObject封装指向value的指针，目前可以作为value的类型有string、double、string_list、double_list
+  * 使用ValueObject封装指向value的指针，目前可以作为value的类型有string、double、string_list(基于skiplist)、double_list
   * 使用union以节省空间，如果value是double或其它简单类型(和void\*所占空间相同)，就直接存储在union里，否则会存储指向value的指针。但要注意析构，避免内存泄露
   ```c
   /*database/toydb.h*/
