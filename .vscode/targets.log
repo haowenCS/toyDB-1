@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jun 26 18:14:45 2022
+# Make data base, printed on Mon Jun 27 00:09:17 2022
 
 # Variables
 
@@ -71,7 +71,7 @@ GOPATH = /home/ubuntu/go
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-22486df4-1fb9-4974-9606-72fc1d5137cf.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-462fcb15-51ac-4c7e-ae47-4627e659ede7.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # automatic
@@ -171,9 +171,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64514, inode 650995): 21 files, no impossibilities.
+# . (device 64514, inode 650995): 22 files, no impossibilities.
 
-# 21 files, no impossibilities in 1 directories.
+# 22 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -191,7 +191,6 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
@@ -224,12 +223,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 29 / storage = 256 B / avg = 8 B
-# current buf: size = 8162 B / used = 256 B / count = 29 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 30 / storage = 268 B / avg = 8 B
+# current buf: size = 8162 B / used = 268 B / count = 30 / avg = 8 B
 
-# strcache performance: lookups = 32 / hit rate = 9%
+# strcache performance: lookups = 33 / hit rate = 9%
 # hash-table stats:
-# Load=29/8192=0%, Rehash=0, Collisions=1/32=3%
-# Finished Make data base on Sun Jun 26 18:14:45 2022
+# Load=30/8192=0%, Rehash=0, Collisions=1/33=3%
+# Finished Make data base on Mon Jun 27 00:09:17 2022
 
  

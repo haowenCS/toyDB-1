@@ -7,3 +7,5 @@ require toycache v0.0.0
 replace toycache => ./toycache
 
 replace lru => ./toycache/lru
+
+replace consistenthash => ./toycache/consistenthash
