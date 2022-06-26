@@ -33,13 +33,13 @@ func NewLru(maxBytes int64, ActionCb func(string, Value)) *LruCache {
 }
 
 //每次查找一个key, 就要返回对应的value并将该key移动到链表尾部
-func (cache *LruCache)Get(key string) (value Value, ok bool){
+func (cache *LruCache) Get(key string) (value Value, ok bool){
 	if element, ok := cache.lruMap[key]; ok {
 		cache.lruList.MoveToFront(element)
 		kv := element.Value.(*entry)
 		return kv.value, true
 	}
-	return
+	return nil, false
 }
 
 func (cache *LruCache) Update() {

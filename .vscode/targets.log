@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jun 19 23:58:48 2022
+# Make data base, printed on Sat Jun 25 23:08:20 2022
 
 # Variables
 
@@ -61,7 +61,7 @@ AM_HOME = /home/ubuntu/ics2021/abstract-machine
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-SSH_CONNECTION = 153.3.60.230 14840 10.0.16.12 22
+SSH_CONNECTION = 101.86.12.201 11017 10.0.16.12 22
 # environment
 PATH = /home/ubuntu/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/bin:/snap/bin
 # environment
@@ -71,7 +71,7 @@ GOPATH = /home/ubuntu/go
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-980964f4-2b27-4b0f-9a60-03fe37bd2c2c.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-72eb85fd-1a51-4c9e-8ee5-7b8af358f494.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # automatic
@@ -86,6 +86,7 @@ PWD = /home/ubuntu/myweb
 *D = $(patsubst %/,%,$(dir $*))
 # environment
 HISTTIMEFORMAT = %F %T 
+ 
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -93,7 +94,7 @@ HOME = /home/ubuntu
 # environment
 LOGNAME = ubuntu
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 +F = $(notdir $+)
 # environment
@@ -109,7 +110,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = 8441
+XDG_SESSION_ID = 20916
 # environment
 USER = ubuntu
 # makefile
@@ -118,8 +119,6 @@ USER = ubuntu
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/ubuntu/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630
 # default
 .VARIABLES := 
 # automatic
@@ -129,9 +128,10 @@ LANGUAGE = en_US.utf8:
 # makefile
 MAKEFLAGS = pqrR
 # environment
+ 
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 153.3.60.230 14840 22
+SSH_CLIENT = 101.86.12.201 11017 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -165,7 +165,8 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 MOTD_SHOWN = pam
 # variable set hash-table stats:
-# Load=76/1024=7%, Rehash=0, Collisions=9/98=9%
+# Load=75/1024=7%, Rehash=0, Collisions=9/97=9%
+ 
 
 # Pattern-specific Variable Values
 
@@ -199,6 +200,7 @@ Makefile:
 
 # Not a target:
 makefile:
+ 
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
@@ -225,12 +227,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 28 / storage = 251 B / avg = 8 B
-# current buf: size = 8162 B / used = 251 B / count = 28 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 28 / storage = 250 B / avg = 8 B
+# current buf: size = 8162 B / used = 250 B / count = 28 / avg = 8 B
 
 # strcache performance: lookups = 31 / hit rate = 9%
 # hash-table stats:
 # Load=28/8192=0%, Rehash=0, Collisions=1/31=3%
-# Finished Make data base on Sun Jun 19 23:58:48 2022
+# Finished Make data base on Sat Jun 25 23:08:20 2022
 
  
