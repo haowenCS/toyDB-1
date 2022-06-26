@@ -1,4 +1,22 @@
 cc_library(
+  name = "lru",
+  srcs = ["lru.cc"],
+  hdrs = ["lru.h"],
+  deps = [
+    ":toydb",
+    ":skiplist",
+    ":doublelinklist",
+  ],
+)
+
+cc_library(
+  name = "doublelinklist",
+  srcs = ["doublelinklist.cc"],
+  hdrs = ["doublelinklist.h"],
+)
+
+
+cc_library(
   name = "toydb",
   srcs = ["toydb.cc"],
   hdrs = ["toydb.h"],
@@ -23,7 +41,6 @@ cc_library(
     ":skiplist",
   ],
 )
-
 
 
 package(default_visibility = ["//visibility:public"]) 

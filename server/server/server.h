@@ -28,6 +28,7 @@
 #include "database/skiplist.h"
 #include "database/sortlist.h"
 #include "database/toydb.h"
+#include "database/lru.h"
 
 
 
@@ -56,6 +57,7 @@ private:
     using db_type = toydb::SkipList<std::string>;
     // using db_type = std::map<std::string, ValueObject>;
 
+    std::unique_ptr<LruCacheSL> lruCache_;
     std::unique_ptr<Epoller> epoller_;
     std::unique_ptr<db_type> toyDB_;
     std::unique_ptr<HeapTimer> timer_;

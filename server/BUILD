@@ -23,6 +23,7 @@ cc_library(
         "//database:skiplist",
         "//database:sortlist",
         "//database:toydb",
+        "//database:lru",
     ],
 )
 

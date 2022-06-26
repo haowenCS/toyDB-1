@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 25 23:08:20 2022
+# Make data base, printed on Sun Jun 26 18:14:45 2022
 
 # Variables
 
@@ -37,7 +37,7 @@ NEMU_HOME = /home/ubuntu/ics2021/nemu
 # default
 MAKE_VERSION := 4.2.1
 # makefile
-CURDIR := /home/ubuntu/myweb
+CURDIR := /home/ubuntu/toydb
 # makefile
 SHELL = /bin/sh
 # environment
@@ -61,7 +61,7 @@ AM_HOME = /home/ubuntu/ics2021/abstract-machine
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-SSH_CONNECTION = 101.86.12.201 11017 10.0.16.12 22
+SSH_CONNECTION = 101.86.12.201 11226 10.0.16.12 22
 # environment
 PATH = /home/ubuntu/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/bin:/snap/bin
 # environment
@@ -71,7 +71,7 @@ GOPATH = /home/ubuntu/go
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-72eb85fd-1a51-4c9e-8ee5-7b8af358f494.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-22486df4-1fb9-4974-9606-72fc1d5137cf.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # automatic
@@ -79,14 +79,13 @@ VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-72eb85fd-1a51-4c9e-8ee5-7b8af358
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/ubuntu/myweb
+PWD = /home/ubuntu/toydb
 # default
 .LOADED := 
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
 HISTTIMEFORMAT = %F %T 
- 
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -94,7 +93,7 @@ HOME = /home/ubuntu
 # environment
 LOGNAME = ubuntu
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 +F = $(notdir $+)
 # environment
@@ -110,7 +109,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = 20916
+XDG_SESSION_ID = 21944
 # environment
 USER = ubuntu
 # makefile
@@ -128,10 +127,9 @@ LANGUAGE = en_US.utf8:
 # makefile
 MAKEFLAGS = pqrR
 # environment
- 
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 101.86.12.201 11017 22
+SSH_CLIENT = 101.86.12.201 11226 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -166,7 +164,6 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 MOTD_SHOWN = pam
 # variable set hash-table stats:
 # Load=75/1024=7%, Rehash=0, Collisions=9/97=9%
- 
 
 # Pattern-specific Variable Values
 
@@ -174,9 +171,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64514, inode 650995): 20 files, no impossibilities.
+# . (device 64514, inode 650995): 21 files, no impossibilities.
 
-# 20 files, no impossibilities in 1 directories.
+# 21 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -194,13 +191,13 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
+ 
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
 
 # Not a target:
 makefile:
- 
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
@@ -227,12 +224,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 28 / storage = 250 B / avg = 8 B
-# current buf: size = 8162 B / used = 250 B / count = 28 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 29 / storage = 256 B / avg = 8 B
+# current buf: size = 8162 B / used = 256 B / count = 29 / avg = 8 B
 
-# strcache performance: lookups = 31 / hit rate = 9%
+# strcache performance: lookups = 32 / hit rate = 9%
 # hash-table stats:
-# Load=28/8192=0%, Rehash=0, Collisions=1/31=3%
-# Finished Make data base on Sat Jun 25 23:08:20 2022
+# Load=29/8192=0%, Rehash=0, Collisions=1/32=3%
+# Finished Make data base on Sun Jun 26 18:14:45 2022
 
  
