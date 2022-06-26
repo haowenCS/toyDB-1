@@ -18,3 +18,12 @@ cc_test(
     "@com_google_googletest//:gtest_main",
   ],
 )
+
+cc_test(
+  name = "test_dll",
+  srcs = ["test_doublelinklist.cc"],
+  deps = [
+    "//database:doublelinklist",
+    "@com_google_googletest//:gtest_main",
+  ],
+)
