@@ -7,7 +7,7 @@ import(
 	"testing"
 )
 
-var vertialDb = map[string]string {
+var virtualDb = map[string]string {
 	"xiaozhang"	:  	"jiaotong",
 	"xiaoliu"	: 	"zhexue",
 	"hetueyuan"	:  	"tongji",
@@ -25,11 +25,11 @@ func TestGetter(t *testing.T) {
 }
 
 func TestGet(t *testing.T) {
-	loadCounts := make(map[string]int, len(vertialDb))
+	loadCounts := make(map[string]int, len(virtualDb))
 	toycache := NewChannel("scores", 2<<10, GetterFunc(
 		func(key string) ([]byte, error) {
 			log.Println("[SlowDB] search key", key)
-			if v, ok := vertialDb[key]; ok {
+			if v, ok := virtualDb[key]; ok {
 				if _, ok := loadCounts[key]; !ok {
 					loadCounts[key] = 0
 				}
@@ -39,7 +39,7 @@ func TestGet(t *testing.T) {
 			return nil, fmt.Errorf("%s not exist", key)
 		}))
 
-	for k, v := range vertialDb {
+	for k, v := range virtualDb {
 		if view, err := toycache.Get(k); err != nil || view.String() != v {
 			t.Fatal("failed to get value of Tom")
 		} // load from callback function

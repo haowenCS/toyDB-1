@@ -2,7 +2,7 @@ package toycache
 
 import(
 	"sync"
-	lru "./lru"
+	"lru"
 )
 
 type Cache struct {
