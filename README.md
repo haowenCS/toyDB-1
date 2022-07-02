@@ -15,10 +15,18 @@
 代码结构：
 ```
 toyDB-+-server-+-BUILD
-      |        |-c++服务端组件
+      |        |-c++服务端内核
       |-client-+-BUILD
       |        |-c++客户端
       |        |-go客户端
+      |-api-+-BUILD
+      |     |-dealHeartbeat处理挂掉的节点
+      |     |-dealLocate选择节点
+      |     |-forward转发请求
+      |     |-apiServer.go主函数
+      |-httphandler-+-BUILD
+      |             |-handler处理请求
+      |             |-heartbeat发送心跳
       |-database-+-BUILD
       |          |-kv数据库组件
       |-protoc-+-BUILD
